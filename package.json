@@ -1,0 +1,31 @@
+{
+  "name": "React-invintation",
+  "version": "0.0.1",
+  "description": "React invitation project using React.js, Node.js, MongoDB, Material design and etc.",
+  "main": "compiled.js",
+  "dependencies": {
+    "browserify": "^10.2.4",
+    "envify": "^3.4.0",
+    "react": "^0.13.3",
+    "uglify-js": "^2.4.23",
+    "reactify": "^1.1.1",
+    "watchify": "^3.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xkha/React-invitation.git"
+  },
+  "keywords": [
+    "'react'"
+  ],
+  "author": "xkha, apys",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xkha/React-invitation/issues"
+  },
+  "homepage": "https://github.com/xkha/React-invitation"
+}
