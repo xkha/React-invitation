@@ -53,3 +53,5 @@ var CommentBox = React.createClass({
         );
     }
 });
+
+module.exports = CommentBox;
