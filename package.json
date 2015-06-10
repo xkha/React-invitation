@@ -4,16 +4,21 @@
   "description": "React invitation project using React.js, Node.js, MongoDB, Material design and etc.",
   "main": "compiled.js",
   "dependencies": {
+    "body-parser": "^1.12.4",
     "browserify": "^10.2.4",
     "envify": "^3.4.0",
+    "express": "^4.12.4",
+    "marked": "^0.3.3",
     "react": "^0.13.3",
-    "uglify-js": "^2.4.23",
     "reactify": "^1.1.1",
-    "watchify": "^3.2.2"
+    "uglify-js": "^2.4.23",
+    "watchify": "^3.2.2",
+    "jquery": "^2.1.4"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
