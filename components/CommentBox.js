@@ -3,6 +3,8 @@ var React = require('react');
 var CommentList = require('./../components/CommentList');
 var CommentForm = require('./../components/CommentForm');
 
+var $ = require('jquery');
+
 var CommentBox = React.createClass({
     loadCommentsFromServer: function() {
         $.ajax({
