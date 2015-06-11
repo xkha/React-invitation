@@ -10,19 +10,31 @@
     "envify": "^3.4.0",
     "express": "^4.12.4",
     "express-restify-mongoose": "^1.0.1",
+    "gulp": "^3.9.0",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-react": "^3.0.1",
+    "gulp-watch": "^4.1.1",
     "jquery": "^2.1.4",
     "marked": "^0.3.3",
     "material-ui": "^0.9.0",
+    "method-override": "^2.3.3",
     "mongodb": "^2.0.33",
     "mongoose": "^4.0.5",
+    "morgan": "^1.5.3",
+    "nconf": "^0.7.1",
     "node-gyp": "^2.0.1",
     "react": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "reactify": "^1.1.1",
+    "rimraf": "^2.3.1",
     "uglify-js": "^2.4.23",
-    "watchify": "^3.2.2"
+    "watchify": "^3.2.2",
+    "winston": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-streamify": "0.0.5",
+    "vinyl-source-stream": "^1.1.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js"

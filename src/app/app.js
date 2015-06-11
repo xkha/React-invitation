@@ -1,13 +1,13 @@
 var React = require('react');
 var CommentBox = require('./../components/commentBox');
 
-//Needed for React Developer Tools
+var injectTapEventPlugin = require('react-tap-event-plugin');
+
 window.React = React;
 
-var injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
 React.render(
-    <CommentBox url='/comments' pollInterval={10000} />,
+    <CommentBox url='/comments' pollInterval={5000} />,
     document.getElementById('content')
 );

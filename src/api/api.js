@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 var restify = require('express-restify-mongoose');
-var config = require('../libs/config');
+var config = require('./../libs/config');
 
 var CommentModel = require('./../model/comment');
-var CommentService = require('./../api/comment');
+var CommentService = require('./comment');
 
 api = {};
 
