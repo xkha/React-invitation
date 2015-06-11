@@ -1,5 +1,7 @@
 var CommentModel = require('./../model/comment');
 
+var logger = require('./../libs/logs');
+
 CommentService = {};
 
 CommentService.find = function (req, res) {
@@ -21,9 +23,8 @@ CommentService.save = function(req, res) {
 
     comment.save(function (err) {
         if (!err) {
-            return res.send({ status: 'OK', comment: comment });
-        } else {
-            console.log(err);
+            logger.info('Save comment:' + comment);
+            return res.send({status: 'OK', comment: comment});
         }
     });
 };
