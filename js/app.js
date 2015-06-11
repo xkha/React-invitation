@@ -1,5 +1,5 @@
 var React = require('react');
-var CommentBox = require('./../components/CommentBox');
+var CommentBox = require('./../components/commentBox');
 
 //Needed for React Developer Tools
 window.React = React;

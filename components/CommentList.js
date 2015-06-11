@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Comment = require('./Comment');
+var Comment = require('./comment');
 
 var CommentList = React.createClass({
     render: function() {
