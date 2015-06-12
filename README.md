@@ -9,5 +9,5 @@ $ gulp
 
 # Run
 ```sh
-$ http://localhost:3000/
+http://localhost:3000/
 ```
