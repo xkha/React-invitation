@@ -8,4 +8,6 @@ $ gulp
 ```
 
 # Run
+```sh
 $ http://localhost:3000/
+```
