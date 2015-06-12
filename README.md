@@ -1,9 +1,11 @@
 # React-invitation
 React invitation project using React.js, Node.js, MongoDB, Material design and etc.
 
-# Run
+# Install
 ```sh
 $ npm install
-$ cd server
-$ node server.js
+$ gulp
 ```
+
+# Run
+$ http://localhost:3000/

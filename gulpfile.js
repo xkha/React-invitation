@@ -4,7 +4,7 @@ var watchify = require('watchify');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
-var nodemon = require('gulp-nodemon');
+var server = require('gulp-express');
 
 var path = {
     OUT: 'app.js',
@@ -24,19 +24,16 @@ gulp.task('watch', function() {
     return watcher.on('update', function () {
         watcher.bundle()
             .pipe(source(path.OUT))
-            .pipe(gulp.dest(path.DEST_SRC))
-        console.log('Updated');
+            .pipe(gulp.dest(path.DEST_SRC));
+        console.log('Watch...');
     })
         .bundle()
         .pipe(source(path.OUT))
         .pipe(gulp.dest(path.DEST_SRC));
 });
 
-/*gulp.task('server', function () {
-    nodemon({
-        script: 'src/server/server.js'
-    });
-});*/
+gulp.task('server', function () {
+    server.run(['./src/server/server.js'], {}, false);
+});
 
-//gulp.task('default', ['watch', 'server']);
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'server']);
