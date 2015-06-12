@@ -4,7 +4,7 @@ var CommentList = require('./commentList');
 var CommentForm = require('./commentForm');
 var Main = require('./main');
 
-var $ = require('jquery');
+var $ = require('../../bower_components/jquery/dist/jquery');
 
 var CommentBox = React.createClass({
     loadCommentsFromServer: function() {
