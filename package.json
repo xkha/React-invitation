@@ -2,12 +2,12 @@
   "name": "React-invintation",
   "version": "0.0.1",
   "description": "React invitation project using React.js, Node.js, MongoDB, Material design and etc.",
-  "main": "compiled.js",
   "dependencies": {
     "body-parser": "^1.12.4",
     "bower": "^1.4.1",
     "browserify": "^10.2.4",
     "bson": "^0.3.2",
+    "cors": "^2.7.1",
     "envify": "^3.4.0",
     "express": "^4.12.4",
     "express-restify-mongoose": "^1.0.1",
@@ -16,7 +16,6 @@
     "gulp-express": "^0.3.5",
     "gulp-react": "^3.0.1",
     "gulp-watch": "^4.1.1",
-    "jquery": "^2.1.4",
     "marked": "^0.3.3",
     "material-ui": "^0.9.0",
     "method-override": "^2.3.3",
@@ -25,6 +24,7 @@
     "morgan": "^1.5.3",
     "nconf": "^0.7.1",
     "node-gyp": "^2.0.1",
+    "node-libs-browser": "^0.5.2",
     "react": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "reactify": "^1.1.1",
@@ -34,12 +34,13 @@
     "winston": "^1.0.0"
   },
   "devDependencies": {
-    "gulp-streamify": "0.0.5",
-    "vinyl-source-stream": "^1.1.0"
+    "jsx-loader": "^0.13.2",
+    "react-hot-loader": "^1.2.7",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "start": "node ./src/server/server.js"
   },
   "repository": {
     "type": "git",

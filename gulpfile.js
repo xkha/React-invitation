@@ -1,4 +1,4 @@
-var gulp = require('gulp');
+/*var gulp = require('gulp');
 var watch = require('gulp-watch');
 var watchify = require('watchify');
 var browserify = require('browserify');
@@ -12,7 +12,7 @@ var path = {
     ENTRY_POINT: 'src/app/app.js'
 };
 
-gulp.task('watch', function() {
+gulp.task('w', function() {
 
     var watcher  = watchify(browserify({
         entries: [path.ENTRY_POINT],
@@ -32,8 +32,8 @@ gulp.task('watch', function() {
         .pipe(gulp.dest(path.DEST_SRC));
 });
 
-gulp.task('server', function () {
+gulp.task('s', function () {
     server.run(['./src/server/server.js'], {}, false);
 });
 
-gulp.task('default', ['watch', 'server']);
+gulp.task('default', ['w', 's']);*/

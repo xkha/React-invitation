@@ -8,6 +8,6 @@ window.React = React;
 injectTapEventPlugin();
 
 React.render(
-    <CommentBox url='/comments' pollInterval={5000} />,
+    <CommentBox url='/comments' pollInterval={10000} />,
     document.getElementById('content')
 );
