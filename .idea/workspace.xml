@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a016ebc-16c4-479b-ba25-0badc3ff6cde" name="Rejected commit: Default (2)" comment="fix live reload and add babel es6">
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\comment.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\commentForm.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\main.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Comment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/CommentBox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/CommentForm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/CommentList.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="4c592850-8432-48f7-b171-b0e40f52549b" name="Failed commit: Failed commit: Rejected commit: Default (2) (2)" comment="fix live reload and add babel es6" />
@@ -207,6 +209,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="React-invitation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="React-invitation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -492,7 +512,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434458120649</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="fix live reload and add babel es6">
+      <created>1434458154731</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1434458154731</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
