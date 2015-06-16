@@ -1,3 +1,0 @@
-NODE_ENV=production browserify -t [ reactify --es6 ] js/app.js | uglifyjs > build/app.min.js
-
-watchify -v -d -t [ reactify --es6 ] src/app/app.js -o build/app.js
