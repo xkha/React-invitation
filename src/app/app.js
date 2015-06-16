@@ -1,13 +1,9 @@
-var React = require('react');
-var CommentBox = require('./../components/commentBox');
+import React from 'react';
+import CommentBox from './../components/CommentBox';
+import InjectTapEventPlugin from 'react-tap-event-plugin';
 
-var injectTapEventPlugin = require('react-tap-event-plugin');
+InjectTapEventPlugin();
 
 window.React = React;
 
-injectTapEventPlugin();
-
-React.render(
-    <CommentBox url='/comments' pollInterval={10000} />,
-    document.getElementById('content')
-);
+React.render(<CommentBox url='/api/comments' pollInterval={10000} />, document.getElementById('content'));
