@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a016ebc-16c4-479b-ba25-0badc3ff6cde" name="Rejected commit: Default (2)" comment="fix live reload and add babel es6">
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\comment.jsx" afterPath="" />
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\commentBox.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\commentForm.jsx" afterPath="" />
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\commentList.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\React-invitation\src\components\main.jsx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
-    <list id="2de6eda6-e0e4-4357-b66d-d0c4a481ba75" name="Failed commit: Rejected commit: Default (2) (2)" comment="fix live reload and add babel es6">
-      <change type="MOVED" beforePath="D:\React-invitation\src\model\comment.js" afterPath="$PROJECT_DIR$/src/model/CommentModel.js" />
     </list>
     <list id="4c592850-8432-48f7-b171-b0e40f52549b" name="Failed commit: Failed commit: Rejected commit: Default (2) (2)" comment="fix live reload and add babel es6" />
     <ignored path="React-invitation.iws" />
@@ -479,7 +471,19 @@
       <option name="project" value="LOCAL" />
       <updated>1434457949535</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fix live reload and add babel es6">
+      <created>1434458102792</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1434458102792</updated>
+    </task>
+    <task id="LOCAL-00030" summary="fix live reload and add babel es6">
+      <created>1434458112607</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1434458112607</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
