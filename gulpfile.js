@@ -10,7 +10,7 @@ var store = require('./src/store/comment/CommentInit');
 var config = require('./src/libs/config');
 var gulp = require('gulp');
 
-gulp.task("webpack-dev-server", function() {
+gulp.task("server", function() {
     var server = new webpackDevServer(webpack(configWebpack), {
         publicPath: configWebpack.output.publicPath,
         hot: true
@@ -33,4 +33,4 @@ gulp.task("webpack-dev-server", function() {
     });
 });
 
-gulp.task("default", ["webpack-dev-server"]);
+gulp.task("default", ["server"]);
