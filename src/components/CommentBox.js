@@ -1,12 +1,11 @@
-var React = require('react');
+import React from 'react';
+import CommentList from './CommentList';
+import CommentForm from './CommentForm';
+import Menu from './Menu';
+import $ from 'jquery';
 
-var CommentList = require('./CommentList');
-var CommentForm = require('./CommentForm');
-var Main = require('./Main');
-var $ = require('jquery');
-
-var CommentBox = React.createClass({
-    loadCommentsFromServer: function() {
+export default React.createClass({
+    loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -19,7 +18,7 @@ var CommentBox = React.createClass({
             }.bind(this)
         });
     },
-    handleCommentSubmit: function(comment) {
+    handleCommentSubmit(comment) {
         var comments = this.state.data;
         comments.push(comment);
         this.setState({data: comments}, function() {
@@ -40,23 +39,21 @@ var CommentBox = React.createClass({
             });
         });
     },
-    getInitialState: function() {
+    getInitialState() {
         return {data: []};
     },
-    componentDidMount: function() {
+    componentDidMount() {
         this.loadCommentsFromServer();
         setInterval(this.loadCommentsFromServer, this.props.pollInterval);
     },
-    render: function() {
+    render() {
         return (
             <div className="commentBox">
                 <h1>Comments</h1>
                 <CommentList data={this.state.data} />
                 <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-                <Main />
+                <Menu />
             </div>
         );
     }
 });
-
-module.exports = CommentBox;

@@ -1,7 +1,7 @@
-var React = require('react');
+import React from 'react';
 
-var CommentForm = React.createClass({
-    handleSubmit: function(e) {
+export default React.createClass({
+    handleSubmit(e) {
         e.preventDefault();
         var author = React.findDOMNode(this.refs.author).value.trim();
         var text = React.findDOMNode(this.refs.text).value.trim();
@@ -12,7 +12,7 @@ var CommentForm = React.createClass({
         React.findDOMNode(this.refs.author).value = '';
         React.findDOMNode(this.refs.text).value = '';
     },
-    render: function() {
+    render() {
         return (
             <form className="commentForm" onSubmit={this.handleSubmit}>
                 <input type="text" placeholder="Your name" ref="author" />
@@ -22,5 +22,3 @@ var CommentForm = React.createClass({
         );
     }
 });
-
-module.exports = CommentForm;

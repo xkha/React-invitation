@@ -1,9 +1,8 @@
-var React = require('react');
+import React from 'react';
+import Comment from './Comment';
 
-var Comment = require('./Comment');
-
-var CommentList = React.createClass({
-    render: function() {
+export default React.createClass({
+    render() {
         var commentNodes = this.props.data.map(function(comment, index) {
             return (
                 // `key` is a React-specific concept and is not mandatory for the
@@ -21,5 +20,3 @@ var CommentList = React.createClass({
         );
     }
 });
-
-module.exports = CommentList;

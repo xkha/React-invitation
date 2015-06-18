@@ -1,9 +1,8 @@
-var React = require('react');
+import React from 'react';
+import marked from 'marked';
 
-var marked = require('marked');
-
-var Comment = React.createClass({
-    render: function() {
+export default React.createClass({
+    render() {
         var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
         return (
             <div className="comment">
@@ -15,5 +14,3 @@ var Comment = React.createClass({
         );
     }
 });
-
-module.exports = Comment;
