@@ -28,7 +28,10 @@ gulp.task("server", function() {
 
     store.init(server.app);
 
-    server.listen(config.get('server-port'), 'localhost', function () {
+    server.listen(config.get('server-port'), 'localhost', function (err) {
+        if(err) {
+            console.log(err);
+        }
         console.log('DevServer started: http://localhost:' + config.get('server-port') + '/');
     });
 });
