@@ -16,9 +16,9 @@ export default React.createClass({
     render() {
         return (
             <form className="commentForm" onSubmit={this.handleSubmit}>
-                <TextField type="text" ref="author" hintText="Your name" />
-                <TextField type="text" ref="text" hintText="Say something..." />
-                <RaisedButton label="Post" />
+                <TextField type="text" ref="author" floatingLabelText="Your name" />
+                <TextField type="text" ref="text" floatingLabelText="Say something..." />
+                <RaisedButton label="Post" primary={true} />
             </form>
         );
     }
