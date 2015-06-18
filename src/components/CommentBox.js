@@ -1,7 +1,7 @@
 import React from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import { AppBar, LeftNav, MenuItem, IconButton } from 'material-ui'
+import { AppBar, LeftNav, MenuItem, IconButton, List, ListItem } from 'material-ui'
 import $ from 'jquery';
 
 import mui from 'material-ui'
@@ -81,7 +81,7 @@ export default React.createClass({
             </div>
         );
     },
-    _onLeftIconButtonTouchTap(e) {
+    _onLeftIconButtonTouchTap() {
         this.refs.leftNav.toggle();
     }
 });

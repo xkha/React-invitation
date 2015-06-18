@@ -1,5 +1,6 @@
 import React from 'react';
 import Comment from './Comment';
+import { List } from 'material-ui';
 
 export default React.createClass({
     render() {
@@ -15,7 +16,9 @@ export default React.createClass({
         });
         return (
             <div className="commentList">
-                {commentNodes}
+                <List>
+                    {commentNodes}
+                </List>
             </div>
         );
     }
