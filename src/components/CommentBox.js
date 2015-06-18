@@ -4,7 +4,21 @@ import CommentForm from './CommentForm';
 import Menu from './Menu';
 import $ from 'jquery';
 
+import mui from 'material-ui'
+var ThemeManager = new mui.Styles.ThemeManager();
+
 export default React.createClass({
+
+    childContextTypes: {
+        muiTheme: React.PropTypes.object
+    },
+
+    getChildContext() {
+        return {
+            muiTheme: ThemeManager.getCurrentTheme()
+        };
+    },
+
     loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,

@@ -1,23 +1,24 @@
 import React from 'react';
+import { RaisedButton, TextField } from 'material-ui';
 
 export default React.createClass({
     handleSubmit(e) {
         e.preventDefault();
-        var author = React.findDOMNode(this.refs.author).value.trim();
-        var text = React.findDOMNode(this.refs.text).value.trim();
+        var author = this.refs.author.getValue().trim();
+        var text = this.refs.text.getValue().trim();
         if (!text || !author) {
             return;
         }
         this.props.onCommentSubmit({author: author, text: text});
-        React.findDOMNode(this.refs.author).value = '';
-        React.findDOMNode(this.refs.text).value = '';
+        this.refs.author.setValue('');
+        this.refs.text.setValue('');
     },
     render() {
         return (
             <form className="commentForm" onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Your name" ref="author" />
-                <input type="text" placeholder="Say something..." ref="text" />
-                <input type="submit" value="Post" />
+                <TextField type="text" ref="author" hintText="Your name" />
+                <TextField type="text" ref="text" hintText="Say something..." />
+                <RaisedButton label="Post" />
             </form>
         );
     }

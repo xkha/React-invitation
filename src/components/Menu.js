@@ -1,19 +1,7 @@
 import React from 'react';
 import { MenuItem, LeftNav, RaisedButton } from 'material-ui';
-import mui from 'material-ui'
-var ThemeManager = new mui.Styles.ThemeManager();
 
 export default React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
-
     render() {
         let menuItems = [
             { route: 'get-started', text: 'Get Started' },
@@ -45,7 +33,7 @@ export default React.createClass({
     },
 
     _handleOnTouchTap() {
-
+        this.refs.leftNav.toggle();
     }
 
 });
