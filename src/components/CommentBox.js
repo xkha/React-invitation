@@ -1,7 +1,7 @@
 import React from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import Menu from './Menu';
+import { AppBar, LeftNav, MenuItem, IconButton } from 'material-ui'
 import $ from 'jquery';
 
 import mui from 'material-ui'
@@ -19,7 +19,7 @@ export default React.createClass({
         };
     },
 
-    loadCommentsFromServer() {
+    _loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -32,7 +32,7 @@ export default React.createClass({
             }.bind(this)
         });
     },
-    handleCommentSubmit(comment) {
+    _handleCommentSubmit(comment) {
         var comments = this.state.data;
         comments.push(comment);
         this.setState({data: comments}, function() {
@@ -57,17 +57,32 @@ export default React.createClass({
         return {data: []};
     },
     componentDidMount() {
-        this.loadCommentsFromServer();
-        setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+        this._loadCommentsFromServer();
+        setInterval(this._loadCommentsFromServer, this.props.pollInterval);
     },
     render() {
+        let menuItems = [
+            { route: 'volleyball', text: 'Volleyball' },
+            { route: 'football', text: 'Football' },
+            { route: 'components', text: 'Components' },
+            {
+                type: MenuItem.Types.LINK,
+                payload: 'https://github.com/xkha/React-invitation',
+                text: 'GitHub'
+            }
+        ];
         return (
             <div className="commentBox">
-                <h1>Comments</h1>
+                <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
+                        title='Invitation'
+                        iconClassNameRight="muidocs-icon-navigation-expand-more" />
+                <LeftNav ref='leftNav' docked={false} menuItems={menuItems} />
                 <CommentList data={this.state.data} />
-                <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-                <Menu />
+                <CommentForm onCommentSubmit={this._handleCommentSubmit} />
             </div>
         );
+    },
+    _onLeftIconButtonTouchTap(e) {
+        this.refs.leftNav.toggle();
     }
 });
