@@ -1,6 +1,5 @@
-var CommentModel = require('./../../model/CommentModel');
-
-var logger = require('./../../libs/logs');
+var CommentModel = require('./../model/CommentModel');
+var logger = require('./../libs/logs');
 
 CommentStore = {};
 

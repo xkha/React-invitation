@@ -6,7 +6,7 @@ var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
 var cors = require('cors');
 var configWebpack = require('./webpack.config');
-var store = require('./src/store/comment/CommentInit');
+var store = require('./src/api/init/comment');
 var config = require('./src/libs/config');
 
 var server = new webpackDevServer(webpack(configWebpack), {

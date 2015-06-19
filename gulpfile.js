@@ -1,14 +1,18 @@
 var path = require('path');
 var bodyParser = require('body-parser');
-var morgan = require('morgan');
 var methodOverride = require('method-override');
+
+var morgan = require('morgan');
+var cors = require('cors');
+var gulp = require('gulp');
+
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
-var cors = require('cors');
 var configWebpack = require('./webpack.config');
-var store = require('./src/store/comment/CommentInit');
 var config = require('./src/libs/config');
-var gulp = require('gulp');
+
+var vkStore = require('./src/api/init/vk');
+var commentStore = require('./src/api/init/comment');
 
 gulp.task("server", function() {
     var server = new webpackDevServer(webpack(configWebpack), {
@@ -26,7 +30,8 @@ gulp.task("server", function() {
     server.app.use(bodyParser.urlencoded({extended: true}));
     server.app.use(cors());
 
-    store.init(server.app);
+    commentStore.init(server.app);
+    vkStore.init(server.app);
 
     server.listen(config.get('server-port'), 'localhost', function (err) {
         if(err) {
