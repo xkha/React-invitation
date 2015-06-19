@@ -54,9 +54,9 @@ export default React.createClass({
     render() {
         var styles = this.getStyles();
         return (
-            <div style={styles.mainContainer}>
-                <div className="login-form">
-                    <Paper zDepth={2} style={styles.paper}>
+            <div style={styles.mainContainer} className = "loginForm clearfix">
+
+                <Paper zDepth={2} style={styles.paper}>
                         <div className = "standard-login">
                             <h2>Login</h2>
                             <TextField
@@ -78,37 +78,7 @@ export default React.createClass({
 
                         </div>
                     </Paper>
-                </div>
-                <Paper zDepth={2} style={styles.paper}>
-                    <div className="registration-form" >
-                        <h2>Registration</h2>
-                        <TextField
-                            hintText="Login"
-                            floatingLabelText="Enter your login" style={styles.textField}/>
-                        <TextField
-                            hintText="E-mail"
-                            floatingLabelText="Enter your e-mail address" />
-                        <TextField
-                            hintText="Name"
-                            floatingLabelText="Enter your name" style={styles.textField}/>
-                        <TextField
-                            hintText="Surname"
-                            floatingLabelText="Enter your surname" />
-                        <TextField
-                            hintText="Password"
-                            floatingLabelText="Enter your password" style={styles.textField}
-                            type="password"/>
-                        <TextField
-                            hintText="Reenter your password"
-                            floatingLabelText="Reenter your password"
-                            type="password"/>
-                        <RaisedButton linkButton={false} primary={true} label="Registration" className="registration-button" style={styles.button} />
-                    </div>
-
-                </Paper>
             </div>
-
-
         );
     }
 });
