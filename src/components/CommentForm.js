@@ -1,6 +1,5 @@
 import React from 'react';
 import { RaisedButton, TextField } from 'material-ui';
-import VK from './../store/vk.js'
 
 export default React.createClass({
     handleSubmit(e) {

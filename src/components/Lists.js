@@ -1,12 +1,5 @@
-/**
- * Created by latr on 20.06.2015.
- */
 import React from 'react';
 import { Paper, List, ListItem, Avatar, FontIcon } from 'material-ui'
-
-import $ from 'jquery';
-
-
 import mui from 'material-ui';
 var Colors = mui.Styles.Colors;
 var ThemeManager = new mui.Styles.ThemeManager();
