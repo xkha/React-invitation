@@ -1,5 +1,3 @@
-var $ = require('./../../bower_components/jquery/dist/jquery');
-
 var VKStore = {};
 
 VKStore.auth = function (req, res) {

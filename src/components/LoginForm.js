@@ -3,8 +3,6 @@
  */
 import React from 'react';
 import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton } from 'material-ui'
-import $ from 'jquery';
-
 
 import mui from 'material-ui'
 var ThemeManager = new mui.Styles.ThemeManager();
