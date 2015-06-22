@@ -65,11 +65,12 @@ export default React.createClass({
                         </div>
                         <div className="SNLogin">
                             <h2>Or login using</h2>
-                            <FloatingActionButton iconClassName="icon-VK icon" secondary={true} style={styles.button} className="VK-button" />
+                            <FloatingActionButton linkButton={true}
+                                                  href="https://oauth.vk.com/authorize?client_id=4963858&scope=email,photos&redirect_uri=http://localhost:3000/vk& response_type=code&v=5.34&state=authfromvk"
+                                                  iconClassName="icon-vk icon" secondary={true} style={styles.button} className="vk-button" />
                             <FloatingActionButton iconClassName="icon-google-plus icon" secondary={true} style={styles.button} className="google-button" />
                             <FloatingActionButton iconClassName="icon-facebook icon" secondary={true} style={styles.button} className="facebook-button" />
                             <FloatingActionButton iconClassName="icon-ericpol icon" secondary={true} style={styles.button} className="ericpol-button" />
-
                         </div>
                     </Paper>
             </div>

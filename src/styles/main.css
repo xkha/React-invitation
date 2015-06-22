@@ -1,3 +1,7 @@
+body {
+    margin: 0px;
+}
+
 @font-face {
     font-family: 'social';
     src:url('./fonts/social.eot');
@@ -22,7 +26,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-VK:before {
+.icon-vk:before {
     content: "\e601";
 }
 .icon-ericpol:before {
@@ -142,7 +146,7 @@
     padding: 20px 20px 20px 20px ;
 }
 
-.VK-button {
+.vk-button {
     background: #6d8cb0 !important;
 }
 

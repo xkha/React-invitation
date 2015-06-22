@@ -1,21 +1,8 @@
 import React from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import { AppBar, LeftNav, MenuItem } from 'material-ui';
-import mui from 'material-ui';
-var ThemeManager = new mui.Styles.ThemeManager();
 
 export default React.createClass({
-
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
 
     _loadCommentsFromServer() {
         $.ajax({
@@ -59,27 +46,11 @@ export default React.createClass({
         setInterval(this._loadCommentsFromServer, this.props.pollInterval);
     },
     render() {
-        let menuItems = [
-            { route: 'volleyball', text: 'Volleyball' },
-            { route: 'football', text: 'Football' },
-            {
-                type: MenuItem.Types.LINK,
-                payload: 'https://github.com/xkha/React-invitation',
-                text: 'GitHub'
-            }
-        ];
         return (
             <div className="commentBox">
-                <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-                        title='Invitation'
-                        iconClassNameRight="muidocs-icon-navigation-expand-more" />
-                <LeftNav ref='leftNav' docked={false} menuItems={menuItems} />
                 <CommentList data={this.state.data} />
                 <CommentForm onCommentSubmit={this._handleCommentSubmit} />
             </div>
         );
-    },
-    _onLeftIconButtonTouchTap() {
-        this.refs.leftNav.toggle();
     }
 });

@@ -1,20 +1,21 @@
 var VKStore = {};
 
 VKStore.auth = function (req, res) {
-    var url = 'https://oauth.vk.com/access_token?client_id=4963858&client_secret=7itok47K1hkGf7h7FXyW&redirect_uri=http://localhost:3000/vk&code=' + req.query['code'];
+    var getAccessTokenUrl = 'https://oauth.vk.com/access_token?client_id=4963858&client_secret=7itok47K1hkGf7h7FXyW&redirect_uri=http://localhost:3000/vk&code=' + req.query.code;
+    var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", getAccessTokenUrl, false);
+    xhr.send(null);
+    var data = JSON.parse(xhr.responseText);
 
-    $.ajax({
-        url: url,
-        dataType: 'json',
-        cache: false,
-        success: function(data) {
-            console.log(data);
-            res.redirect('back');
-        },
-        error: function(xhr, status, err) {
-            console.error(url, status, err.toString());
-        }
-    });
+    var user_id = data.user_id;
+    var access_token = data.access_token;
+
+    xhr = new XMLHttpRequest();
+    var getUserInfoUrl = 'https://api.vk.com/method/users.get?user_id=' + user_id + '&v=5.34&access_token=' + access_token;
+    xhr.open("GET", getUserInfoUrl, false);
+    xhr.send(null);
+    res.redirect('back');
 };
 
 module.exports = VKStore;
