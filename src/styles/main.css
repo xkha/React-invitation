@@ -28,12 +28,104 @@
 .icon-ericpol:before {
     content: "\e600";
 }
+.icon-home:before {
+    content: "\e900";
+}
+.icon-pencil:before {
+    content: "\e905";
+}
+.icon-pencil2:before {
+    content: "\e906";
+}
+.icon-images:before {
+    content: "\e90e";
+}
+.icon-camera:before {
+    content: "\e90f";
+}
+.icon-folder-open:before {
+    content: "\e930";
+}
+.icon-location:before {
+    content: "\e947";
+}
+.icon-display:before {
+    content: "\e956";
+}
+.icon-mobile:before {
+    content: "\e958";
+}
+.icon-bubble:before {
+    content: "\e96b";
+}
+.icon-user:before {
+    content: "\e971";
+}
+.icon-users:before {
+    content: "\e972";
+}
+.icon-user-plus:before {
+    content: "\e973";
+}
+.icon-user-minus:before {
+    content: "\e974";
+}
+.icon-user-check:before {
+    content: "\e975";
+}
+.icon-spinner:before {
+    content: "\e984";
+}
+.icon-key:before {
+    content: "\e98d";
+}
+.icon-key2:before {
+    content: "\e98e";
+}
+.icon-lock:before {
+    content: "\e98f";
+}
+.icon-wrench:before {
+    content: "\e991";
+}
+.icon-cog:before {
+    content: "\e994";
+}
+.icon-pie-chart:before {
+    content: "\e99a";
+}
+.icon-trophy:before {
+    content: "\e99e";
+}
+.icon-bin2:before {
+    content: "\e9ad";
+}
+.icon-star-empty:before {
+    content: "\e9d7";
+}
+.icon-star-full:before {
+    content: "\e9d9";
+}
+.icon-enter:before {
+    content: "\ea13";
+}
+.icon-exit:before {
+    content: "\ea14";
+}
 .icon-google-plus:before {
     content: "\ea88";
 }
 .icon-facebook:before {
     content: "\ea8c";
 }
+.icon-github:before {
+    content: "\eab1";
+}
+.icon-github2:before {
+    content: "\eab2";
+}
+
+
 
 
 .standard-login {

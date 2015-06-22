@@ -46,42 +46,42 @@ export default React.createClass({
                     <List subheader="Users">
                         <ListItem
                             leftAvatar={<Avatar
-                                icon={<FontIcon className="icon-VK" />}
+                                icon={<FontIcon className="icon-user" />}
                                 color={Colors.blue300}
                                 backgroundColor={Colors.indigo900} />}
-                            rightIcon={<FontIcon className="icon-VK" />}>
+                            rightIcon={<FontIcon className="icon-bubble" />}>
                             Brendan Lim
                         </ListItem>
                         <ListItem
                             leftAvatar={<Avatar
-                                icon={<FontIcon className="icon-VK" />}
+                                icon={<FontIcon className="icon-user" />}
                                 color={Colors.blue300}
                                 backgroundColor={Colors.indigo900} />}
-                            rightIcon={<FontIcon className="icon-VK" />}>
+                            rightIcon={<FontIcon className="icon-bubble" />}>
                             Eric Hoffman
                         </ListItem>
                         <ListItem
                             leftAvatar={<Avatar
-                                icon={<FontIcon className="icon-VK" />}
+                                icon={<FontIcon className="icon-user" />}
                                 color={Colors.blue300}
                                 backgroundColor={Colors.indigo900} />}
-                            rightIcon={<FontIcon className="icon-VK" />}>
+                            rightIcon={<FontIcon className="icon-bubble" />}>
                             Grace Ng
                         </ListItem>
                         <ListItem
                             leftAvatar={<Avatar
-                                icon={<FontIcon className="icon-VK" />}
+                                icon={<FontIcon className="icon-user" />}
                                 color={Colors.blue300}
                                 backgroundColor={Colors.indigo900} />}
-                            rightIcon={<FontIcon className="icon-VK" />}>
+                            rightIcon={<FontIcon className="icon-bubble" />}>
                             Kerem Suer
                         </ListItem>
                         <ListItem
                             leftAvatar={<Avatar
-                                icon={<FontIcon className="icon-VK" />}
+                                icon={<FontIcon className="icon-user" />}
                                 color={Colors.blue300}
                                 backgroundColor={Colors.indigo900} />}
-                            rightIcon={<FontIcon className="icon-VK" />}>
+                            rightIcon={<FontIcon className="icon-bubble" />}>
                             Raquel Parrado
                         </ListItem>
                     </List>
