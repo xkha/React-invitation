@@ -1,6 +1,6 @@
 import React from 'react';
-import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton } from 'material-ui'
-import mui from 'material-ui'
+import { Paper, TextField, RaisedButton, FloatingActionButton } from 'material-ui';
+import mui from 'material-ui';
 var ThemeManager = new mui.Styles.ThemeManager();
 
 export default React.createClass({

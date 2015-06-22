@@ -1,8 +1,8 @@
 import React from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import { AppBar, LeftNav, MenuItem, IconButton, List, ListItem } from 'material-ui'
-import mui from 'material-ui'
+import { AppBar, LeftNav, MenuItem } from 'material-ui';
+import mui from 'material-ui';
 var ThemeManager = new mui.Styles.ThemeManager();
 
 export default React.createClass({

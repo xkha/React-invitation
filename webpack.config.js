@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var config = require('./src/libs/config');
 
 module.exports = {
-  devtool: "#inline-source-map",
+  devtool: '#inline-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:' + config.get('server-port'),
     'webpack/hot/only-dev-server',
@@ -17,17 +17,17 @@ module.exports = {
   },
   plugins: [
     new webpack.ResolverPlugin(
-        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
     ),
     new webpack.ProvidePlugin({
-      $:      "jquery",
-      jQuery: "jquery"
+      $:      'jquery',
+      jQuery: 'jquery'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
   resolve: {
-    root: [path.join(__dirname, "bower_components")],
+    root: [path.join(__dirname, 'bower_components')],
     extensions: ['', '.js', '.jsx']
   },
   module: {
@@ -37,4 +37,4 @@ module.exports = {
       include: path.join(__dirname, 'src')
     }]
   }
-};
+}
