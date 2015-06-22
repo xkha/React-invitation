@@ -1,10 +1,11 @@
 import React from 'react';
 import InjectTapEventPlugin from 'react-tap-event-plugin';
 
-import LoginForm from './../components/LoginForm.js';
-import Registration from './../components/Registration.js';
-import Lists from './../components/Lists.js';
+import LoginForm from './../components/LoginForm';
+import Registration from './../components/Registration';
+import Lists from './../components/Lists';
 import CommentBox from './../components/CommentBox';
+import CardComponent from './../components/CardComponent';
 
 var Router = require('react-router');
 var Route = Router.Route;
@@ -17,6 +18,7 @@ var App = React.createClass({
     render() {
         return (
             <div>
+
                 <RouteHandler/>
             </div>
         )
@@ -37,6 +39,7 @@ var routes = (
         <Route path="registration" handler={Registration}/>
         <Route path="comment" handler={Comment}/>
         <Route path="list" handler={Lists}/>
+        <Route path="card" handler={CardComponent}/>
     </Route>
 );
 
