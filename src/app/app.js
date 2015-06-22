@@ -5,6 +5,8 @@ import LoginForm from './../components/LoginForm.js';
 import Registration from './../components/Registration.js';
 import Lists from './../components/Lists.js';
 import CommentBox from './../components/CommentBox';
+import CardComponent from './../components/CardComponent';
+
 import { AppBar, LeftNav, MenuItem } from 'material-ui';
 import mui from 'material-ui';
 
@@ -68,6 +70,7 @@ var routes = (
         <Route path="registration" handler={Registration}/>
         <Route path="comment" handler={Comment}/>
         <Route path="list" handler={Lists}/>
+        <Route path="card" handler={CardComponent}/>
     </Route>
 );
 
