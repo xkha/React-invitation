@@ -15,6 +15,9 @@ VKStore.auth = function (req, res) {
     var getUserInfoUrl = 'https://api.vk.com/method/users.get?user_id=' + user_id + '&v=5.34&access_token=' + access_token;
     xhr.open("GET", getUserInfoUrl, false);
     xhr.send(null);
+
+    req.session.user = JSON.parse(xhr.responseText);
+
     res.redirect('back');
 };
 

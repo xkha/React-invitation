@@ -16,35 +16,25 @@ export default React.createClass({
     },
 
     getStyles() {
-        var style = {
-
+        return {
             mainContainer: {
-
                 marginLeft: 'auto',
                 marginRight: 'auto',
                 width: '630px'
-
             },
-
             paper: {
-
                 width: '630px',
                 float: 'left',
                 marginBottom: '50px'
             },
-
             button: {
                 margin: '5px'
             },
-
             textField: {
                 margin: '0 50px 0 0'
             }
         };
-
-        return style;
     },
-
     render() {
         var styles = this.getStyles();
         return (
@@ -66,7 +56,7 @@ export default React.createClass({
                         <div className="SNLogin">
                             <h2>Or login using</h2>
                             <FloatingActionButton linkButton={true}
-                                                  href="https://oauth.vk.com/authorize?client_id=4963858&scope=email,photos&redirect_uri=http://localhost:3000/vk& response_type=code&v=5.34&state=authfromvk"
+                                                  href="https://oauth.vk.com/authorize?client_id=4963858&scope=email,photos&redirect_uri=http://localhost:3000/vk&response_type=code&v=5.34&state=auth"
                                                   iconClassName="icon-vk icon" secondary={true} style={styles.button} className="vk-button" />
                             <FloatingActionButton iconClassName="icon-google-plus icon" secondary={true} style={styles.button} className="google-button" />
                             <FloatingActionButton iconClassName="icon-facebook icon" secondary={true} style={styles.button} className="facebook-button" />
