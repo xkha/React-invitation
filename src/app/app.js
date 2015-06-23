@@ -6,6 +6,7 @@ import Registration from './../components/Registration.js';
 import Lists from './../components/Lists.js';
 import CommentBox from './../components/CommentBox';
 import CardComponent from './../components/CardComponent';
+import LoginIcon from './../components/LoginIcon';
 
 import { AppBar, LeftNav, MenuItem } from 'material-ui';
 import mui from 'material-ui';
@@ -45,7 +46,7 @@ var App = React.createClass({
             <div>
                 <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                         title='React invitation'
-                        iconClassNameRight="muidocs-icon-navigation-expand-more" />
+                        iconElementRight ={<LoginIcon/>}/>
                 <LeftNav ref='leftNav' docked={false} menuItems={menuItems} />
                 <RouteHandler/>
             </div>
