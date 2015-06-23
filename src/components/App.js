@@ -1,9 +1,10 @@
 import React from 'react';
 import Router from 'react-router';
 
-import { AppBar, LeftNav, MenuItem, Avatar, FontIcon } from 'material-ui';
+import { AppBar, LeftNav, MenuItem, Styles, FontIcon, Avatar } from 'material-ui';
+let { Colors, Spacing, Typography } = Styles;
+
 import mui from 'material-ui';
-var {Typography, Colors, Spacing} = mui.Styles;
 
 var ThemeManager = new mui.Styles.ThemeManager();
 
@@ -48,16 +49,25 @@ var App = React.createClass({
         };
     },
     render() {
+        let header = (
+            <div style={this.getStyles()} onTouchTap={this._onHeaderClick}>
+                React invitation
+            </div>
+        );
         return (
             <div>
                 <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                         title='React invitation'
+                        iconElementRight ={<LoginIcon/>}/>
+                <LeftNav
+                    ref="leftNav"
+                    docked={false}
+                    isInitiallyOpen={false}
+                    header={header}
+                    menuItems={menuItems}
+                    selectedIndex={this._getSelectedIndex()}
+                    onChange={this._onLeftNavChange} />
                         iconElementRight={<Avatar style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}>A</Avatar>}/>
-                <LeftNav ref='leftNav' docked={false}
-                         menuItems={menuItems}
-                         title='React invitation'
-                         selectedIndex={this._getSelectedIndex()}
-                         onChange={this._onLeftNavChange} />
                 <LeftNav ref='rightNav' docked={false}
                     menuItems={rightMenuItems}
                     header={<div style={this.getStyles()}>
@@ -78,7 +88,6 @@ var App = React.createClass({
     },
     _getSelectedIndex() {
         let currentItem;
-
         for (let i = menuItems.length - 1; i >= 0; i--) {
             currentItem = menuItems[i];
             if (currentItem.route && this.context.router.isActive(currentItem.route)) return i;
@@ -87,8 +96,9 @@ var App = React.createClass({
     _onLeftNavChange(e, key, payload) {
         this.context.router.transitionTo(payload.route);
     },
-    _onRightNavChange(e, key, payload) {
-        this.context.router.transitionTo(payload.route);
+    _onHeaderClick() {
+        this.context.router.transitionTo('root');
+        this.refs.leftNav.close();
     }
 });
 
