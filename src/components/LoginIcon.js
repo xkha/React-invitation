@@ -6,17 +6,6 @@ var Typography = mui.Styles.Typography;
 var ThemeManager = new mui.Styles.ThemeManager();
 
 export default React.createClass({
-
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
-
     getStyles() {
         var style = {
 
@@ -52,15 +41,14 @@ export default React.createClass({
 
         return style;
     },
-
     render() {
         var styles = this.getStyles();
         return (
             <div style={styles.root}>
                 <Avatar style={styles.avatar} icon={<FontIcon className="icon-user"/>}/>
                 <div style={styles.textStyle}>
-                    <span style={styles.title}>apys</span>
-                    <a style={styles.subtitle} href="">Logout</a>
+                    <span style={styles.title}>xkha</span>
+                    <a style={styles.subtitle} href="/signout">Logout</a>
                 </div>
             </div>
         );

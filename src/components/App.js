@@ -10,7 +10,7 @@ var ThemeManager = new mui.Styles.ThemeManager();
 
 var RouteHandler = Router.RouteHandler;
 
-let menuItems = [
+let leftMenuItems = [
     { route: 'login', text: 'Login' },
     { route: 'registration', text: 'Registration' },
     {
@@ -48,32 +48,57 @@ var App = React.createClass({
             marginBottom: '8px'
         };
     },
+    getInitialState() {
+        return { user:{} };
+    },
+
+    componentDidMount() {
+        $.ajax({
+            url: '/sign',
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+                this.setState({user: data.response[0]});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(err);
+            }.bind(this)
+        });
+    },
     render() {
         let header = (
             <div style={this.getStyles()} onTouchTap={this._onHeaderClick}>
                 React invitation
             </div>
         );
+
+        //https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg
+
+        //http://cs623317.vk.me/v623317570/15583/2xIk8Y9JsfY.jpg
+
+
+
+
         return (
             <div>
                 <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                         title='React invitation'
-                        iconElementRight ={<Avatar style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}>A</Avatar>}/>
+                        iconElementRight ={<Avatar src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg' style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}/>}/>
                 <LeftNav
                     ref="leftNav"
                     docked={false}
                     isInitiallyOpen={false}
                     header={header}
-                    menuItems={menuItems}
+                    menuItems={leftMenuItems}
                     selectedIndex={this._getSelectedIndex()}
-                    onChange={this._onLeftNavChange} />
+                    onChange={this._onNavChange} />
                 <LeftNav ref="rightNav" docked={false}
                     menuItems={rightMenuItems}
                     header={<div style={this.getStyles()}>
                         Signed in as apys
                     </div>}
                     selectedIndex={this._getSelectedIndex()}
-                    onChange={this._onRightNavChange}
+                    onChange={this._onNavChange}
                     openRight={true}/>
                 <RouteHandler/>
             </div>
@@ -87,15 +112,13 @@ var App = React.createClass({
     },
     _getSelectedIndex() {
         let currentItem;
+        let menuItems = leftMenuItems.concat(rightMenuItems);
         for (let i = menuItems.length - 1; i >= 0; i--) {
             currentItem = menuItems[i];
             if (currentItem.route && this.context.router.isActive(currentItem.route)) return i;
         }
     },
-    _onLeftNavChange(e, key, payload) {
-        this.context.router.transitionTo(payload.route);
-    },
-    _onRightNavChange(e, key, payload) {
+    _onNavChange(e, key, payload) {
         this.context.router.transitionTo(payload.route);
     },
     _onHeaderClick() {

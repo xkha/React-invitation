@@ -5,8 +5,8 @@ import App from './../src/components/App';
 import LoginForm from './../src/components/LoginForm';
 import Registration from './../src/components/Registration';
 
-var Router = require('react-router');
-var Route = Router.Route;
+import Router from 'react-router';
+let { Route, Redirect } = Router;
 
 InjectTapEventPlugin();
 window.React = React;
