@@ -1,14 +1,9 @@
-/**
- * Created by apys on 23.06.2015.
- */
 import React from 'react';
 import {Avatar, FontIcon, SvgIcon } from 'material-ui';
 import mui from 'material-ui';
 var Colors = mui.Styles.Colors;
 var Typography = mui.Styles.Typography;
 var ThemeManager = new mui.Styles.ThemeManager();
-
-
 
 export default React.createClass({
 

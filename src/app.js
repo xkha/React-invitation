@@ -1,9 +1,9 @@
 import React from 'react';
 import InjectTapEventPlugin from 'react-tap-event-plugin';
 
-import App from './../components/App';
-import LoginForm from './../components/LoginForm';
-import Registration from './../components/Registration';
+import App from './../src/components/App';
+import LoginForm from './../src/components/LoginForm';
+import Registration from './../src/components/Registration';
 
 var Router = require('react-router');
 var Route = Router.Route;

@@ -1,8 +1,10 @@
 import React from 'react';
 import Router from 'react-router';
 
-import { AppBar, LeftNav, MenuItem } from 'material-ui';
-import LoginIcon from './../components/LoginIcon';
+import { AppBar, LeftNav, MenuItem, Styles } from 'material-ui';
+import LoginIcon from './LoginIcon';
+let { Colors, Spacing, Typography } = Styles;
+
 import mui from 'material-ui';
 
 var ThemeManager = new mui.Styles.ThemeManager();
@@ -28,17 +30,39 @@ var App = React.createClass({
             muiTheme: ThemeManager.getCurrentTheme()
         };
     },
+    getStyles() {
+        return {
+            cursor: 'pointer',
+            //.mui-font-style-headline
+            fontSize: '24px',
+            color: Typography.textFullWhite,
+            lineHeight: Spacing.desktopKeylineIncrement + 'px',
+            fontWeight: Typography.fontWeightLight,
+            backgroundColor: Colors.cyan500,
+            paddingLeft: Spacing.desktopGutter,
+            paddingTop: '0px',
+            marginBottom: '8px'
+        };
+    },
     render() {
+        let header = (
+            <div style={this.getStyles()} onTouchTap={this._onHeaderClick}>
+                React invitation
+            </div>
+        );
         return (
             <div>
                 <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                         title='React invitation'
                         iconElementRight ={<LoginIcon/>}/>
-                <LeftNav ref='leftNav' docked={false}
-                         menuItems={menuItems}
-                         title='React invitation'
-                         selectedIndex={this._getSelectedIndex()}
-                         onChange={this._onLeftNavChange} />
+                <LeftNav
+                    ref="leftNav"
+                    docked={false}
+                    isInitiallyOpen={false}
+                    header={header}
+                    menuItems={menuItems}
+                    selectedIndex={this._getSelectedIndex()}
+                    onChange={this._onLeftNavChange} />
                 <RouteHandler/>
             </div>
         )
@@ -48,7 +72,6 @@ var App = React.createClass({
     },
     _getSelectedIndex() {
         let currentItem;
-
         for (let i = menuItems.length - 1; i >= 0; i--) {
             currentItem = menuItems[i];
             if (currentItem.route && this.context.router.isActive(currentItem.route)) return i;
@@ -56,6 +79,10 @@ var App = React.createClass({
     },
     _onLeftNavChange(e, key, payload) {
         this.context.router.transitionTo(payload.route);
+    },
+    _onHeaderClick() {
+        this.context.router.transitionTo('root');
+        this.refs.leftNav.close();
     }
 });
 

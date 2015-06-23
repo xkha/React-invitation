@@ -7,7 +7,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:' + config.get('server-port'),
     'webpack/hot/only-dev-server',
-    './src/app/app'
+    './src/app'
   ],
   debug: false,
   output: {
