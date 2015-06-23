@@ -58,7 +58,7 @@ var App = React.createClass({
             <div>
                 <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                         title='React invitation'
-                        iconElementRight ={<LoginIcon/>}/>
+                        iconElementRight ={<Avatar style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}>A</Avatar>}/>
                 <LeftNav
                     ref="leftNav"
                     docked={false}
@@ -67,8 +67,7 @@ var App = React.createClass({
                     menuItems={menuItems}
                     selectedIndex={this._getSelectedIndex()}
                     onChange={this._onLeftNavChange} />
-                        iconElementRight={<Avatar style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}>A</Avatar>}/>
-                <LeftNav ref='rightNav' docked={false}
+                <LeftNav ref="rightNav" docked={false}
                     menuItems={rightMenuItems}
                     header={<div style={this.getStyles()}>
                         Signed in as apys
@@ -94,6 +93,9 @@ var App = React.createClass({
         }
     },
     _onLeftNavChange(e, key, payload) {
+        this.context.router.transitionTo(payload.route);
+    },
+    _onRightNavChange(e, key, payload) {
         this.context.router.transitionTo(payload.route);
     },
     _onHeaderClick() {
