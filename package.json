@@ -24,7 +24,8 @@
     "node-pre-gyp": "^0.6.7",
     "react": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
-    "winston": "^1.0.0"
+    "winston": "^1.0.0",
+    "xmlhttprequest": "^1.7.0"
   },
   "devDependencies": {
     "babel-core": "^5.4.7",
