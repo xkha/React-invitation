@@ -79,7 +79,8 @@ export default class App extends React.Component {
                 <div>
                     <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                             title='React invitation'
-                            iconElementRight ={<LoginIcon onTouchTap={this._onRightButtonTouchTap}/>}/>
+                            iconElementRight ={<LoginIcon /> }
+                            onRightButtonTouchTap={this._onRightButtonTouchTap}/>
                     <LeftNav
                         ref="leftNav"
                         docked={false}
