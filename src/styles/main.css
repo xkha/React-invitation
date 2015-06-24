@@ -183,9 +183,12 @@ body {
 }
 
 .registration-form {
-    padding: 20px;
+    padding: 15px;
 }
 
+.loginForm {
+    padding: 15px;
+}
 
 .clearfix:after {
     content: ".";

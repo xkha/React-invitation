@@ -49,7 +49,7 @@ export default React.createClass({
                 <Avatar src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg' style={styles.avatar} />
                 <div style={styles.text}>
                     <span style={styles.title}>xkha</span>
-                    <a style={styles.subtitle} href="/signout">Logout</a>
+                    <a style={styles.subtitle} href="/logout">Logout</a>
                 </div>
             </div>
         );

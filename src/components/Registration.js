@@ -48,9 +48,9 @@ export default React.createClass({
     render() {
         var styles = this.getStyles();
         return (
-            <div style={styles.mainContainer} className="clearfix">
+            <div style={styles.mainContainer} className="registration-form clearfix">
                 <Paper zDepth={2} style={styles.paper}>
-                    <div className="registration-form" >
+                    <div className="registration-form">
                         <h2>Registration</h2>
                         <TextField
                             hintText="Login"

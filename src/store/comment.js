@@ -1,4 +1,4 @@
-var CommentModel = require('./../model/CommentModel');
+var CommentModel= require('./../model/Comment');
 var logger = require('./../libs/logs');
 
 CommentStore = {};

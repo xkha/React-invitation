@@ -54,7 +54,7 @@ export default class App extends React.Component {
         return { user:{} };
     }
     componentDidMount() {
-        $.ajax({
+        /*$.ajax({
             url: '/sign',
             dataType: 'json',
             cache: false,
@@ -64,7 +64,7 @@ export default class App extends React.Component {
             error: function(xhr, status, err) {
                 console.error(err);
             }.bind(this)
-        });
+        });*/
     }
     render() {
         let header = (

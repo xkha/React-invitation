@@ -18,10 +18,22 @@ var commentStore = require('./src/api/init/comment');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 
+var passport = require('passport');
+var expressSession = require('express-session');
+var LocalStrategy = require('passport-local').Strategy;
+var Account = require('./src/model/Account');
+
 gulp.task("server", function() {
     var server = new webpackDevServer(webpack(configWebpack), {
         publicPath: configWebpack.output.publicPath,
         hot: true
+    });
+
+    server.listen(config.get('server-port'), 'localhost', function (err) {
+        if(err) {
+            console.log(err);
+        }
+        console.log('DevServer started: http://localhost:' + config.get('server-port') + '/');
     });
 
     var env = process.env.NODE_ENV || 'development';
@@ -34,6 +46,7 @@ gulp.task("server", function() {
     server.app.use(bodyParser.urlencoded({extended: true}));
     server.app.use(cors());
 
+    // session config
     mongoose.connect(config.get('mongoose:uri'));
     server.app.use(session({
         secret: 'secret',
@@ -42,24 +55,37 @@ gulp.task("server", function() {
         store: new MongoStore({ mongooseConnection: mongoose.connection })
     }));
 
+    // passport config
+    passport.use(new LocalStrategy(Account.authenticate()));
+    passport.serializeUser(Account.serializeUser());
+    passport.deserializeUser(Account.deserializeUser());
+
+    server.app.use(passport.initialize());
+    server.app.use(passport.session());
+
+    // init api
     commentStore.init(server.app);
     vkStore.init(server.app);
 
-    server.app.get('/sign', function(req, res) {
-        res.send(req.session.user);
+    // routes
+    server.app.post('/login', passport.authenticate('local'), function(req, res) {
+        res.redirect('/');
     });
 
-    server.app.get('/signout', function(req, res) {
-        req.session.destroy(function(_) {
-            res.redirect("/");
+     server.app.post('/register', function(req, res) {
+         Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+            if (err) {
+                console.log(err);
+            }
+            passport.authenticate('local')(req, res, function () {
+                return res.redirect('/');
+            });
         });
     });
 
-    server.listen(config.get('server-port'), 'localhost', function (err) {
-        if(err) {
-            console.log(err);
-        }
-        console.log('DevServer started: http://localhost:' + config.get('server-port') + '/');
+    server.app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
     });
 });
 
