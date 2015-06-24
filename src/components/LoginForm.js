@@ -1,19 +1,15 @@
 import React from 'react';
-import { Paper, TextField, RaisedButton, FloatingActionButton } from 'material-ui';
-import mui from 'material-ui';
-var ThemeManager = new mui.Styles.ThemeManager();
+import { Paper, TextField, RaisedButton, FloatingActionButton, Styles } from 'material-ui';
 
-export default React.createClass({
+let ThemeManager = new Styles.ThemeManager();
 
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
+export default class LoginForm extends React.Component {
 
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
+        }
+    }
 
     getStyles() {
         return {
@@ -34,7 +30,7 @@ export default React.createClass({
                 margin: '0 50px 0 0'
             }
         };
-    },
+    }
     render() {
         var styles = this.getStyles();
         return (
@@ -66,4 +62,12 @@ export default React.createClass({
             </div>
         );
     }
-});
+}
+
+LoginForm.contextTypes = {
+    router: React.PropTypes.func
+};
+
+LoginForm.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};

@@ -1,14 +1,10 @@
 import React from 'react';
 import Router from 'react-router';
-
 import { AppBar, LeftNav, MenuItem, Styles, FontIcon, Avatar } from 'material-ui';
+
 let { Colors, Spacing, Typography } = Styles;
-
-import mui from 'material-ui';
-
-var ThemeManager = new mui.Styles.ThemeManager();
-
-var RouteHandler = Router.RouteHandler;
+let { RouteHandler } = Router;
+let ThemeManager = new Styles.ThemeManager();
 
 let leftMenuItems = [
     { route: 'login', text: 'Login' },
@@ -25,19 +21,23 @@ let rightMenuItems = [
     { route: 'logout', text: 'Logout' }
 ];
 
-var App = React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
+export default class App extends React.Component {
+    constructor() {
+        super();
+        this._getSelectedIndex = this._getSelectedIndex.bind(this);
+        this._onNavChange = this._onNavChange.bind(this);
+        this._onHeaderClick = this._onHeaderClick.bind(this);
+        this._onLeftIconButtonTouchTap = this._onLeftIconButtonTouchTap.bind(this);
+        this._onRightButtonTouchTap = this._onRightButtonTouchTap.bind(this);
+    }
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
+        }
+    }
     getStyles() {
         return {
             cursor: 'pointer',
-            //.mui-font-style-headline
             fontSize: '24px',
             color: Typography.textFullWhite,
             lineHeight: Spacing.desktopKeylineIncrement + 'px',
@@ -47,11 +47,10 @@ var App = React.createClass({
             paddingTop: '0px',
             marginBottom: '8px'
         };
-    },
+    }
     getInitialState() {
         return { user:{} };
-    },
-
+    }
     componentDidMount() {
         $.ajax({
             url: '/sign',
@@ -64,52 +63,47 @@ var App = React.createClass({
                 console.error(err);
             }.bind(this)
         });
-    },
+    }
     render() {
         let header = (
             <div style={this.getStyles()} onTouchTap={this._onHeaderClick}>
                 React invitation
             </div>
         );
-
         //https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg
 
         //http://cs623317.vk.me/v623317570/15583/2xIk8Y9JsfY.jpg
-
-
-
-
         return (
-            <div>
-                <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-                        title='React invitation'
-                        iconElementRight ={<Avatar src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg' style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}/>}/>
-                <LeftNav
-                    ref="leftNav"
-                    docked={false}
-                    isInitiallyOpen={false}
-                    header={header}
-                    menuItems={leftMenuItems}
-                    selectedIndex={this._getSelectedIndex()}
-                    onChange={this._onNavChange} />
-                <LeftNav ref="rightNav" docked={false}
-                    menuItems={rightMenuItems}
-                    header={<div style={this.getStyles()}>
-                        Signed in as apys
-                    </div>}
-                    selectedIndex={this._getSelectedIndex()}
-                    onChange={this._onNavChange}
-                    openRight={true}/>
-                <RouteHandler/>
-            </div>
-        )
-    },
+                <div>
+                    <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
+                            title='React invitation'
+                            iconElementRight ={<Avatar src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg' style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}/>}/>
+                    <LeftNav
+                        ref="leftNav"
+                        docked={false}
+                        isInitiallyOpen={false}
+                        header={header}
+                        menuItems={leftMenuItems}
+                        selectedIndex={this._getSelectedIndex()}
+                        onChange={this._onNavChange} />
+                    <LeftNav ref="rightNav" docked={false}
+                        menuItems={rightMenuItems}
+                        header={<div style={this.getStyles()}>
+                            Signed in as apys
+                        </div>}
+                        selectedIndex={this._getSelectedIndex()}
+                        onChange={this._onNavChange}
+                        openRight={true}/>
+                    <RouteHandler/>
+                </div>
+            );
+    }
     _onLeftIconButtonTouchTap() {
         this.refs.leftNav.toggle();
-    },
+    }
     _onRightButtonTouchTap() {
         this.refs.rightNav.toggle();
-    },
+    }
     _getSelectedIndex() {
         let currentItem;
         let menuItems = leftMenuItems.concat(rightMenuItems);
@@ -117,18 +111,20 @@ var App = React.createClass({
             currentItem = menuItems[i];
             if (currentItem.route && this.context.router.isActive(currentItem.route)) return i;
         }
-    },
+    }
     _onNavChange(e, key, payload) {
         this.context.router.transitionTo(payload.route);
-    },
+    }
     _onHeaderClick() {
         this.context.router.transitionTo('root');
         this.refs.leftNav.close();
     }
-});
+}
 
 App.contextTypes = {
     router: React.PropTypes.func
 };
 
-module.exports = App;
+App.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};
