@@ -12,7 +12,7 @@ export default React.createClass({
             root: {
                 fontWeight: Typography.fontWeightMedium,
                 boxSizing: 'border-box',
-                minWidth: '100px',
+                minWidth: '110px',
                 marginRight: '20px',
                 marginTop: '5px'
 
@@ -25,7 +25,8 @@ export default React.createClass({
             avatar: {
                 marginRight:16,
                 display: 'inline-block',
-                float: 'left'
+                float: 'left',
+                cursor: 'pointer'
             },
             title: {
                 color: Colors.white,
@@ -45,8 +46,8 @@ export default React.createClass({
         var styles = this.getStyles();
         return (
             <div style={styles.root}>
-                <Avatar style={styles.avatar} icon={<FontIcon className="icon-user"/>}/>
-                <div style={styles.textStyle}>
+                <Avatar src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg' style={styles.avatar} />
+                <div style={styles.text}>
                     <span style={styles.title}>xkha</span>
                     <a style={styles.subtitle} href="/signout">Logout</a>
                 </div>

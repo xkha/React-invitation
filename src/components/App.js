@@ -1,6 +1,7 @@
 import React from 'react';
 import Router from 'react-router';
 import { AppBar, LeftNav, MenuItem, Styles, FontIcon, Avatar } from 'material-ui';
+import LoginIcon from './../components/LoginIcon';
 
 let { Colors, Spacing, Typography } = Styles;
 let { RouteHandler } = Router;
@@ -9,6 +10,7 @@ let ThemeManager = new Styles.ThemeManager();
 let leftMenuItems = [
     { route: 'login', text: 'Login' },
     { route: 'registration', text: 'Registration' },
+    { route: 'card', text: 'Card' },
     {
         type: MenuItem.Types.LINK,
         payload: 'https://github.com/xkha/React-invitation',
@@ -77,7 +79,7 @@ export default class App extends React.Component {
                 <div>
                     <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                             title='React invitation'
-                            iconElementRight ={<Avatar src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg' style={{cursor: 'pointer'}} onTouchTap={this._onRightButtonTouchTap}/>}/>
+                            iconElementRight ={<LoginIcon onTouchTap={this._onRightButtonTouchTap}/>}/>
                     <LeftNav
                         ref="leftNav"
                         docked={false}
