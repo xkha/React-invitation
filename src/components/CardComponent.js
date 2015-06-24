@@ -17,102 +17,88 @@ export default React.createClass({
         };
     },
 
+    getStyles() {
+        return {
+            mainContainer: {
+                width: '80%',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                minWidth: '330px'
+            },
+            parentPaper: {
+                margin: '20px'
+            },
+            headersMargin: {
+                marginLeft: '10px'
+            },
+            childPaper: {
+                float: 'left',
+                margin: '10px'
+            },
+            card: {
+                width: '150px',
+                float: 'left',
+                margin: '5px'
+            },
+            button: {
+                marginLeft: '10px',
+                marginRight: '5px'
+            }
+        }
+
+    },
+
 
     render() {
+        var style = this.getStyles();
         return (
-            <div style={{width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
-                <Paper zDepth={2} style={{margin: '20px'}}>
-                    <h1 style={{marginLeft: '10px'}}> <FontIcon className="icon-volleyball"/> Training</h1>
-                    <h2 style={{marginLeft: '10px'}}>
+            <div style={style.mainContainer}>
+                <Paper zDepth={2} style={style.parentPaper}>
+                    <h1 style={style.headersMargin}> <FontIcon className="icon-volleyball"/> Training</h1>
+                    <h2 style={style.headersMargin}>
                         <FontIcon className="icon-calendar"/>
                         Today at 6 p.m. </h2>
-                    <RaisedButton secondary={true} label="IN"/>
-                    <RaisedButton primary={true} label="OUT"/>
+                    <RaisedButton secondary={true} label="IN" style={style.button}/>
+                    <RaisedButton primary={true} label="OUT" style={style.button}/>
 
-                    <Paper zDepth={1} style={{float: 'left', margin: '10px'}}>
-                        <h2 style={{marginLeft: '10px'}}> IN </h2>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                    <Paper zDepth={1} style={style.childPaper}>
+                        <h2 style={style.headersMargin}> IN </h2>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="apys"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="xkha"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="apys"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="xkha"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="apys"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
-                            <CardHeader
-                                title="xkha"
-                                subtitle="Comment"
-                                avatar={<Avatar
-                                    icon={<FontIcon className="icon-user" />}/>}/>
-                        </Card>
-
-                    </Paper>
-                    <Paper zDepth={1} style={{float: 'left', margin: '10px'}}>
-                        <h2 style={{marginLeft: '10px'}}> OUT </h2>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
-                            <CardHeader
-                                title="apys"
-                                subtitle="Comment"
-                                avatar={<Avatar
-                                    icon={<FontIcon className="icon-user" />}/>}/>
-                        </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
-                            <CardHeader
-                                title="xkha"
-                                subtitle="Comment"
-                                avatar={<Avatar
-                                    icon={<FontIcon className="icon-user" />}/>}/>
-                        </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
-                            <CardHeader
-                                title="apys"
-                                subtitle="Comment"
-                                avatar={<Avatar
-                                    icon={<FontIcon className="icon-user" />}/>}/>
-                        </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
-                            <CardHeader
-                                title="xkha"
-                                subtitle="Comment"
-                                avatar={<Avatar
-                                    icon={<FontIcon className="icon-user" />}/>}/>
-                        </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
-                            <CardHeader
-                                title="apys"
-                                subtitle="Comment"
-                                avatar={<Avatar
-                                    icon={<FontIcon className="icon-user" />}/>}/>
-                        </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="xkha"
                                 subtitle="Comment"
@@ -121,44 +107,44 @@ export default React.createClass({
                         </Card>
 
                     </Paper>
-                    <Paper zDepth={1} style={{float: 'left', margin: '10px'}}>
-                        <h2 style={{marginLeft: '10px'}}> UNDEFINED </h2>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                    <Paper zDepth={1} style={style.childPaper}>
+                        <h2 style={style.headersMargin}> OUT </h2>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="apys"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="xkha"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="apys"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="xkha"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="apys"
                                 subtitle="Comment"
                                 avatar={<Avatar
                                     icon={<FontIcon className="icon-user" />}/>}/>
                         </Card>
-                        <Card style={{width: '150px', float: 'left', margin: '5px'}}>
+                        <Card style={style.card}>
                             <CardHeader
                                 title="xkha"
                                 subtitle="Comment"
@@ -167,8 +153,54 @@ export default React.createClass({
                         </Card>
 
                     </Paper>
-                    <h2 style={{marginLeft: '10px'}}> Comments </h2>
-                    <CommentBox url='/api/comments' pollInterval='10000' style={{margin: '10px'}}/>
+                    <Paper zDepth={1} style={style.childPaper}>
+                        <h2 style={style.headersMargin}> UNDEFINED </h2>
+                        <Card style={style.card}>
+                            <CardHeader
+                                title="apys"
+                                subtitle="Comment"
+                                avatar={<Avatar
+                                    icon={<FontIcon className="icon-user" />}/>}/>
+                        </Card>
+                        <Card style={style.card}>
+                            <CardHeader
+                                title="xkha"
+                                subtitle="Comment"
+                                avatar={<Avatar
+                                    icon={<FontIcon className="icon-user" />}/>}/>
+                        </Card>
+                        <Card style={style.card}>
+                            <CardHeader
+                                title="apys"
+                                subtitle="Comment"
+                                avatar={<Avatar
+                                    icon={<FontIcon className="icon-user" />}/>}/>
+                        </Card>
+                        <Card style={style.card}>
+                            <CardHeader
+                                title="xkha"
+                                subtitle="Comment"
+                                avatar={<Avatar
+                                    icon={<FontIcon className="icon-user" />}/>}/>
+                        </Card>
+                        <Card style={style.card}>
+                            <CardHeader
+                                title="apys"
+                                subtitle="Comment"
+                                avatar={<Avatar
+                                    icon={<FontIcon className="icon-user" />}/>}/>
+                        </Card>
+                        <Card style={style.card}>
+                            <CardHeader
+                                title="xkha"
+                                subtitle="Comment"
+                                avatar={<Avatar
+                                    icon={<FontIcon className="icon-user" />}/>}/>
+                        </Card>
+
+                    </Paper>
+                    <h2 style={style.headersMargin}> Comments </h2>
+                    <CommentBox url='/api/comments' pollInterval='10000'/>
                 </Paper>
             </div>
 

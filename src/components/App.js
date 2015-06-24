@@ -1,7 +1,7 @@
 import React from 'react';
 import Router from 'react-router';
 import { AppBar, LeftNav, MenuItem, Styles, FontIcon, Avatar } from 'material-ui';
-import LoginIcon from './../components/LoginIcon';
+import LoginIcon from './LoginIcon';
 
 let { Colors, Spacing, Typography } = Styles;
 let { RouteHandler } = Router;
