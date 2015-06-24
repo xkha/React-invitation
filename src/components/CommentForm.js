@@ -14,11 +14,24 @@ export default React.createClass({
         this.refs.text.setValue('');
     },
     render() {
+        var style= {
+            form: {
+                margin: '20px',
+                paddingBottom: '50px'
+            },
+            button: {
+                marginLeft: '5px',
+                marginRight: '5px'
+            },
+            input: {
+                marginRight: '10px'
+            }
+        };
         return (
-            <form className="commentForm" onSubmit={this.handleSubmit}>
-                <TextField type="text" ref="author" floatingLabelText="Your name" />
-                <TextField type="text" ref="text" floatingLabelText="Say something..." />
-                <RaisedButton label="Post" primary={true} />
+            <form className="commentForm" onSubmit={this.handleSubmit} style={style.form}>
+                <TextField type="text" ref="author" floatingLabelText="Your name" style={style.input}/>
+                <TextField type="text" ref="text" floatingLabelText="Say something..." style={style.input}/>
+                <RaisedButton label="Post" primary={true} style={style.button} />
             </form>
         );
     }
