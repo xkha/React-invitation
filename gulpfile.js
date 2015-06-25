@@ -25,10 +25,20 @@ var Account = require('./src/model/Account');
 
 var ReactViews = require('express-react-views');
 
+var devCompiler = webpack(configWebpack);
+
+gulp.task("build", function() {
+    devCompiler.run(function() {});
+});
+
 gulp.task("server", function() {
+
     var server = new webpackDevServer(webpack(configWebpack), {
         publicPath: configWebpack.output.publicPath,
-        hot: true
+        hot: true,
+        stats: {
+            colors: true
+        }
     });
 
     server.listen(config.get('server-port'), 'localhost', function (err) {
@@ -76,7 +86,7 @@ gulp.task("server", function() {
 
     // routes
     server.app.post('/login', passport.authenticate('local'), function(req, res) {
-        res.redirect('/');
+        res.render('App', { user : req.user });
     });
 
      server.app.post('/register', function(req, res) {
@@ -85,7 +95,7 @@ gulp.task("server", function() {
                 console.log(err);
             }
             passport.authenticate('local')(req, res, function () {
-                res.render('CommentBox', { user : req.user });
+                res.render('Index', { name : req.user.username });
             });
         });
     });
@@ -94,6 +104,19 @@ gulp.task("server", function() {
         req.logout();
         res.redirect('/');
     });
+
+    // handle errors
+    server.app.use(function(err, req, res, next) {
+        console.error(err.stack);
+        next(err);
+    });
+    server.app.use(function(err, req, res, next) {
+        if (req.xhr) {
+            res.status(500).send({ error: 'Something blew up!' });
+        } else {
+            next(err);
+        }
+    });
 });
 
-gulp.task("default", ["server"]);
+gulp.task("default", ["build", "server"]);

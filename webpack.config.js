@@ -3,13 +3,13 @@ var webpack = require('webpack');
 var config = require('./src/libs/config');
 
 module.exports = {
-  devtool: '#inline-source-map',
+  devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://localhost:' + config.get('server-port'),
     'webpack/hot/only-dev-server',
     './src/app'
   ],
-  debug: false,
+  debug: true,
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'app.js',
