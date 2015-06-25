@@ -1,8 +1,7 @@
 import React from 'react';
 let Router = require('react-router');
 import { Styles } from 'material-ui';
-import HeaderComponent from './HeaderComponent';
-import Categories from './Categories';
+import CategoriesCards from './CategoriesCards';
 
 let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
@@ -32,10 +31,13 @@ export default React.createClass({
     render() {
         var styles = this.getStyles();
         return (
-            <div>
-                <HeaderComponent/>
-                <Categories/>
-            </div>
+                <div style={styles.root}>
+                    <div style={styles.categories} className="clearfix">
+                        <CategoriesCards heading="Sports" img="http://material-ui.com/images/get-started.svg"/>
+                        <CategoriesCards heading="Parties" img="http://material-ui.com/images/css-framework.svg"/>
+                        <CategoriesCards heading="Other" img="http://material-ui.com/images/components.svg"/>
+                    </div>
+                </div>
         );
     }
 });
