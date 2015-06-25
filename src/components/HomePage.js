@@ -1,14 +1,8 @@
-/**
- * Created by apys on 25.06.2015.
- */
 import React from 'react';
-var Router = require('react-router');
-import mui from 'material-ui';
+let Router = require('react-router');
 import { RaisedButton, Paper, ClearFix, IconButton, Styles} from 'material-ui';
 
-var ThemeManager = new mui.Styles.ThemeManager();
-
-
+let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
 
 export default React.createClass({
@@ -111,10 +105,8 @@ export default React.createClass({
 
     },
 
-
     render() {
         var styles = this.getStyles();
-
         return (
             <div>
                 <div style={styles.root}>
@@ -132,14 +124,10 @@ export default React.createClass({
                                 labelStyle={styles.label}
                                 linkButton={true}
                                 href="https://github.com/xkha/React-invitation"/>
-
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
         );
     }
 });
