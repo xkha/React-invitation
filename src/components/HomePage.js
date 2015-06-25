@@ -45,7 +45,7 @@ export default React.createClass({
                 color: ThemeManager.palette.primary1Color
             },
             githubStyle: {
-                margin: '16px 32px 0px 8px'
+                margin: '16px 32px 0px 32px'
             },
             demoStyle: {
                 margin: '16px 32px 0px 32px'
@@ -122,12 +122,16 @@ export default React.createClass({
                     <div style={styles.tagline}>
                         <h1 style={styles.h1}>React Invitation</h1>
                         <h2 style={styles.h2}>
-                            A Set of React Components <span style={styles.nowrap}>
-                            that Implement</span> <span style={styles.nowrap}>
-                            Google&apos;s Material Design</span>
+                            A project for invitations to any events. <span style={styles.nowrap}>
+                            Developing with</span> <span style={styles.nowrap}>
+                            Facebook&apos;s React, MongoDB and Google&apos;s Material Design</span>
                         </h2>
                         <div>
-                            <RaisedButton label="Demo" labelStyle={styles.label}/> <RaisedButton label="GitHub" labelStyle={styles.label}/>
+                            <RaisedButton label="GitHub"
+                                style={styles.githubStyle}
+                                labelStyle={styles.label}
+                                linkButton={true}
+                                href="https://github.com/xkha/React-invitation"/>
 
                         </div>
 

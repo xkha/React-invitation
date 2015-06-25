@@ -8,7 +8,6 @@ export default React.createClass({
             root: {
                 fontWeight: Typography.fontWeightMedium,
                 boxSizing: 'border-box',
-                minWidth: '110px',
                 marginRight: '20px',
                 marginTop: '5px'
             },
