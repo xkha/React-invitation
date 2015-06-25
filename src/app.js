@@ -5,7 +5,7 @@ import App from './../src/components/App';
 import LoginForm from './../src/components/LoginForm';
 import Registration from './../src/components/Registration';
 import CardComponent from './../src/components/CardComponent';
-import HomePage from './../src/components/HomePage';
+import HomePage from './../src/components/homepage/HomePage';
 
 import Router from 'react-router';
 let { Route, Redirect } = Router;
