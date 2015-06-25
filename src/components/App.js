@@ -11,6 +11,7 @@ let leftMenuItems = [
     { route: 'login', text: 'Login' },
     { route: 'registration', text: 'Registration' },
     { route: 'card', text: 'Card' },
+    { route: 'home', text: 'Home' },
     {
         type: MenuItem.Types.LINK,
         payload: 'https://github.com/xkha/React-invitation',
