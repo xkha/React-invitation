@@ -1,7 +1,6 @@
 import React from 'react';
-import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton } from 'material-ui'
-import mui from 'material-ui'
-var ThemeManager = new mui.Styles.ThemeManager();
+import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton, Styles } from 'material-ui'
+let ThemeManager = new Styles.ThemeManager();
 
 export default React.createClass({
 
@@ -16,33 +15,24 @@ export default React.createClass({
     },
 
     getStyles() {
-        var style = {
-
+        return {
             mainContainer: {
-
                 marginLeft: 'auto',
                 marginRight: 'auto',
                 width: '630px'
-
             },
-
             paper: {
-
                 width: '630px',
                 float: 'left',
                 marginBottom: '50px'
             },
-
             button: {
                 margin: '5px'
             },
-
             textField: {
                 margin: '0 50px 0 0'
             }
         };
-
-        return style;
     },
 
     render() {

@@ -17,6 +17,8 @@ let AppRoutes = (
         <Route name="login" handler={LoginForm} />
         <Route name="registration" handler={Registration} />
         <Route name="card" handler={CardComponent} />
+        <Route name="profile" handler={Registration} />
+        <Route name="logout" handler={Registration} />
     </Route>
 );
 

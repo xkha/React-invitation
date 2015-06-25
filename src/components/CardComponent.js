@@ -1,10 +1,7 @@
 import React from 'react';
-import { Paper, Card, CardHeader, Avatar, CardMedia, CardTitle, CardActions, RaisedButton, CardText, FontIcon} from 'material-ui';
+import { Paper, Card, CardHeader, Avatar, CardMedia, CardTitle, CardActions, RaisedButton, CardText, FontIcon, Styles } from 'material-ui';
 import CommentBox from './../components/CommentBox';
-import mui from 'material-ui';
-var ThemeManager = new mui.Styles.ThemeManager();
-
-
+let ThemeManager = new Styles.ThemeManager();
 
 export default React.createClass({
     childContextTypes: {
@@ -47,7 +44,6 @@ export default React.createClass({
         }
 
     },
-
 
     render() {
         var style = this.getStyles();
@@ -203,7 +199,6 @@ export default React.createClass({
                     <CommentBox url='/api/comments' pollInterval='10000'/>
                 </Paper>
             </div>
-
         );
     }
 });

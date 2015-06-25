@@ -1,21 +1,16 @@
 import React from 'react';
-import {Avatar, FontIcon, SvgIcon } from 'material-ui';
-import mui from 'material-ui';
-var Colors = mui.Styles.Colors;
-var Typography = mui.Styles.Typography;
-var ThemeManager = new mui.Styles.ThemeManager();
+import { Avatar, FontIcon, SvgIcon, Styles } from 'material-ui';
+let { Colors, Typography } = Styles;
 
 export default React.createClass({
     getStyles() {
-        var style = {
-
+        return {
             root: {
                 fontWeight: Typography.fontWeightMedium,
                 boxSizing: 'border-box',
                 minWidth: '110px',
                 marginRight: '20px',
                 marginTop: '5px'
-
             },
             text: {
                 display: 'inline-block',
@@ -32,26 +27,24 @@ export default React.createClass({
                 color: Colors.white,
                 display: 'block',
                 fontSize: 15
-            },
-            subtitle: {
-                color: Colors.lightBlack,
-                display: 'block',
-                fontSize: 14
             }
         };
-
-        return style;
     },
     render() {
         var styles = this.getStyles();
         return (
             <div style={styles.root}>
-                <Avatar src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg' style={styles.avatar} />
+                <Avatar
+                    src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg'
+                    style={styles.avatar}
+                    onTouchTap={this._rightMenuHandler}/>
                 <div style={styles.text}>
-                    <span style={styles.title}>xkha</span>
-                    <a style={styles.subtitle} href="/logout">Logout</a>
+                    <span style={styles.title}></span>
                 </div>
             </div>
         );
+    },
+    _rightMenuHandler() {
+        this.props.onTouchTap();
     }
 });

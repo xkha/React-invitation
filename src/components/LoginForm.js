@@ -1,6 +1,5 @@
 import React from 'react';
 import { Paper, TextField, RaisedButton, FloatingActionButton, Styles } from 'material-ui';
-
 let ThemeManager = new Styles.ThemeManager();
 
 export default React.createClass({

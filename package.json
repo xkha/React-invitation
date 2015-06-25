@@ -10,6 +10,7 @@
     "connect-mongo": "^0.8.1",
     "cors": "^2.7.1",
     "express": "^4.12.4",
+    "express-react-views": "^0.8.1",
     "express-restify-mongoose": "^1.0.1",
     "express-session": "^1.11.3",
     "gulp": "^3.9.0",

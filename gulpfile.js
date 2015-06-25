@@ -23,6 +23,8 @@ var expressSession = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 var Account = require('./src/model/Account');
 
+var ReactViews = require('express-react-views');
+
 gulp.task("server", function() {
     var server = new webpackDevServer(webpack(configWebpack), {
         publicPath: configWebpack.output.publicPath,
@@ -63,6 +65,11 @@ gulp.task("server", function() {
     server.app.use(passport.initialize());
     server.app.use(passport.session());
 
+    // express-react-views config
+    server.app.set('view engine', 'js');
+    server.app.engine('js', ReactViews.createEngine());
+    server.app.set('views', __dirname + '/src/components');
+
     // init api
     commentStore.init(server.app);
     vkStore.init(server.app);
@@ -78,7 +85,7 @@ gulp.task("server", function() {
                 console.log(err);
             }
             passport.authenticate('local')(req, res, function () {
-                return res.redirect('/');
+                res.render('CommentBox', { user : req.user });
             });
         });
     });
