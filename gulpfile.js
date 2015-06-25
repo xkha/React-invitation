@@ -6,6 +6,7 @@ var session = require('express-session');
 var morgan = require('morgan');
 var cors = require('cors');
 var gulp = require('gulp');
+var rimraf = require('gulp-rimraf');
 
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
@@ -29,6 +30,11 @@ var devCompiler = webpack(configWebpack);
 
 gulp.task("build", function() {
     devCompiler.run(function() {});
+});
+
+gulp.task('clean', function() {
+    return gulp.src('./build/*.js', { read: false })
+        .pipe(rimraf({ force: true }));
 });
 
 gulp.task("server", function() {
@@ -75,30 +81,30 @@ gulp.task("server", function() {
     server.app.use(passport.initialize());
     server.app.use(passport.session());
 
+    // init api
+    commentStore.init(server.app);
+    vkStore.init(server.app);
+
     // express-react-views config
     server.app.set('view engine', 'js');
     server.app.engine('js', ReactViews.createEngine());
     server.app.set('views', __dirname + '/src/components');
 
-    // init api
-    commentStore.init(server.app);
-    vkStore.init(server.app);
-
     // routes
     server.app.post('/login', passport.authenticate('local'), function(req, res) {
-        res.render('App', { user : req.user });
+        res.render('Index', { name: req.user.username });
     });
 
-     server.app.post('/register', function(req, res) {
+     /*server.app.post('/register', function(req, res) {
          Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
             if (err) {
                 console.log(err);
             }
             passport.authenticate('local')(req, res, function () {
-                res.render('Index', { name : req.user.username });
+                res.render('index', { name: 'John' });
             });
         });
-    });
+    });*/
 
     server.app.get('/logout', function(req, res) {
         req.logout();
@@ -119,4 +125,4 @@ gulp.task("server", function() {
     });
 });
 
-gulp.task("default", ["build", "server"]);
+gulp.task("default", ["clean", "build", "server"]);
