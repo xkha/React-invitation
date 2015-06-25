@@ -41,9 +41,6 @@ export default React.createClass({
             githubStyle: {
                 margin: '16px 32px 0px 32px'
             },
-            demoStyle: {
-                margin: '16px 32px 0px 32px'
-            },
             h1: {
                 color: Colors.darkWhite,
                 fontWeight: Typography.fontWeightLight,
@@ -65,44 +62,11 @@ export default React.createClass({
                 color: 'rgba(255, 255, 255, 0.870588)',
                 fontWeight: 300,
                 fontFamily: 'Roboto'
-
             },
             nowrap: {
                 whiteSpace: 'nowrap'
-            },
-            rootNext: {
-                backgroundColor: Colors.grey200
-            },
-            content: {
-                maxWidth: '700px',
-                padding: 0,
-                margin: '0 auto',
-                fontWeight: Typography.fontWeightLight,
-                fontSize: '20px',
-                lineHeight: '28px',
-                paddingTop: '19px',
-                marginBottom: '13px',
-                letterSpacing: '0',
-                color: Typography.textDarkBlack
-            },
-            someSection: {
-                maxWidth: '906px'
-            },
-            rooter: {
-                backgroundColor: Colors.grey200,
-                textAlign: 'center'
-            },
-            h3: {
-                margin: '0',
-                padding: '0',
-                fontWeight: Typography.fontWeightLight,
-                fontSize: '22'
-            },
-            button: {
-                marginTop: 32
             }
         }
-
     },
 
     render() {
