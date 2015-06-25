@@ -5,7 +5,7 @@ import CommentForm from './CommentForm';
 export default React.createClass({
 
     _loadCommentsFromServer() {
-        /*$.ajax({
+        $.ajax({
             url: this.props.url,
             dataType: 'json',
             cache: false,
@@ -15,7 +15,7 @@ export default React.createClass({
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
-        });*/
+        });
     },
     _handleCommentSubmit(comment) {
         var comments = this.state.data;

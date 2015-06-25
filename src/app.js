@@ -1,26 +1,25 @@
 import React from 'react';
 import InjectTapEventPlugin from 'react-tap-event-plugin';
 
-import App from './../src/components/App';
 import LoginForm from './../src/components/LoginForm';
 import Registration from './../src/components/Registration';
 import CardComponent from './../src/components/CardComponent';
 import HomePage from './../src/components/homepage/HomePage';
+import App from './../src/components/App';
 
 import Router from 'react-router';
-let { Route, Redirect } = Router;
+let { Route, Redirect, DefaultRoute } = Router;
 
 InjectTapEventPlugin();
 window.React = React;
 
 let AppRoutes = (
     <Route name="root" path="/" handler={App}>
-        <Route name="login" handler={LoginForm} />
-        <Route name="registration" handler={Registration} />
-        <Route name="card" handler={CardComponent} />
-        <Route name="profile" handler={Registration} />
-        <Route name="logout" handler={Registration} />
-        <Route name="home" handler={HomePage} />
+        <Route name="home" path="/app" handler={HomePage}/>
+        <Route name="login" path="/login" handler={LoginForm} />
+        <Route name="registration" path="/registration"  handler={Registration} />
+        <Route name="card" path="/card" handler={CardComponent} />
+        <Route name="profile" path="/profile" handler={Registration} />
     </Route>
 );
 

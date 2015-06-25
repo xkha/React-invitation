@@ -29,6 +29,9 @@ let rightMenuItems = [
 ];
 
 let App = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.func
+    },
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
@@ -98,11 +101,11 @@ let App = React.createClass({
     _onHeaderClick() {
         this.context.router.transitionTo('root');
         this.refs.leftNav.close();
+    },
+    _onLoginHandler(data) {
+        console.log(data);
+        this.context.router.transitionTo('root');
     }
 });
-
-App.contextTypes = {
-    router: React.PropTypes.func
-};
 
 module.exports = App;

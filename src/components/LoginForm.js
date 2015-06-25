@@ -1,19 +1,20 @@
 import React from 'react';
 import { Paper, TextField, RaisedButton, FloatingActionButton, Styles } from 'material-ui';
 let ThemeManager = new Styles.ThemeManager();
+let request = require('superagent');
 
 export default React.createClass({
-
+    contextTypes: {
+        router: React.PropTypes.func
+    },
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
-
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
         };
     },
-
     getStyles() {
         return {
             mainContainer: {
@@ -34,20 +35,36 @@ export default React.createClass({
             }
         };
     },
-
+    _loginHandleSubmit(e) {
+        e.preventDefault();
+        var username = this.refs.username.getValue();
+        var password = this.refs.password.getValue();
+        if (!username || !password) {
+            return;
+        }
+        $.ajax({
+            url: '/login',
+            dataType: 'json',
+            type: 'POST',
+            data: {'username': username, 'password': password },
+            success: function(data) {
+                this.context.router.transitionTo('root');
+            }.bind(this)
+        });
+    },
     render() {
         var styles = this.getStyles();
         return (
             <div style={styles.mainContainer} className="loginForm clearfix">
                 <Paper zDepth={2} style={styles.paper}>
-                    <form action="/register" method="POST" className="standard-login">
+                    <form onSubmit={this._loginHandleSubmit} className="standard-login">
                         <h2>Login</h2>
                         <TextField
-                            name="username"
-                            hintText=""
-                            floatingLabelText="Enter your login" />
+                            ref="username"
+                            hintText="Username"
+                            floatingLabelText="Enter your username" />
                         <TextField
-                            name="password"
+                            ref="password"
                             hintText="Password"
                             floatingLabelText="Enter your password"
                             type="password"/>
