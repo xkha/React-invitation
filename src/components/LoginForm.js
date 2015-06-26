@@ -84,13 +84,17 @@ export default class LoginForm extends React.Component {
         if (!username || !password) {
             return;
         }
+        var self = this;
         $.ajax({
             url: '/login',
             dataType: 'json',
             type: 'POST',
             data: {'username': username, 'password': password },
-            success: function(data) {
-                this.context.router.transitionTo('root');
+            success: function(result) {
+                localStorage.setItem('username', result['username']);
+                this.context.router.goBack();
+                //this.context.router.props.
+                //console.log(self);
             }.bind(this)
         });
     }

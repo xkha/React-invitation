@@ -36,6 +36,7 @@ export default class App extends React.Component {
         this._onRightButtonTouchTap = this._onRightButtonTouchTap.bind(this);
         this._onNavChange = this._onNavChange.bind(this);
         this._onHeaderClick = this._onHeaderClick.bind(this);
+        this.state = { username: window.localStorage.getItem('username') };
     }
     // Important for theme!
     getChildContext() {
@@ -64,9 +65,9 @@ export default class App extends React.Component {
         );
         return (
                 <div>
-                    <AppBar title='React invitation'
-                            onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-                            iconElementRight={<LoginIcon onTouchTap={this._onRightButtonTouchTap}/>}/>
+                    <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
+                            iconElementRight={<LoginIcon username={this.state.username}
+                            onTouchTap={this._onRightButtonTouchTap}/>}/>
                     <LeftNav
                         ref="leftNav"
                         docked={false}

@@ -38,7 +38,7 @@ export default class CategoriesCards extends React.Component {
         }
     }
     getInitialState() {
-        return { zDepth: 0 };
+        return { zDepth: this.state.zDepth };
     }
     render() {
         var styles = this.getStyles();

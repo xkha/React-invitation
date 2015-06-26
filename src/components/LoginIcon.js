@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, FontIcon, SvgIcon, Styles } from 'material-ui';
+import { Avatar, FontIcon, SvgIcon, Styles, ListItem } from 'material-ui';
 let { Colors, Typography } = Styles;
 let ThemeManager = new Styles.ThemeManager();
 
@@ -41,7 +41,7 @@ export default class LoginIcon extends React.Component {
         };
     }
     render() {
-        var styles = this.getStyles();
+        let styles = this.getStyles();
         return (
             <div style={styles.root}>
                 <Avatar
@@ -49,7 +49,7 @@ export default class LoginIcon extends React.Component {
                     style={styles.avatar}
                     onTouchTap={this._rightMenuHandler}/>
                 <div style={styles.text}>
-                    <span style={styles.title}></span>
+                    <span style={styles.title}>{this.props.username}</span>
                 </div>
             </div>
         );
