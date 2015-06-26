@@ -1,21 +1,16 @@
 import React from 'react';
-let Router = require('react-router');
 import { RaisedButton, Paper, ClearFix, IconButton, Styles} from 'material-ui';
 
 let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
 
-export default React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
+export default class HeaderComponent extends React.Component {
+    // Important for theme!
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
         };
-    },
-
+    }
     getStyles() {
         return {
             root: {
@@ -67,8 +62,7 @@ export default React.createClass({
                 whiteSpace: 'nowrap'
             }
         }
-    },
-
+    }
     render() {
         var styles = this.getStyles();
         return (
@@ -94,4 +88,9 @@ export default React.createClass({
             </div>
         );
     }
-});
+}
+
+// Important for theme!
+HeaderComponent.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};

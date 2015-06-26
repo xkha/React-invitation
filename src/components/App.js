@@ -28,18 +28,21 @@ let rightMenuItems = [
     }
 ];
 
-let App = React.createClass({
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
+export default class App extends React.Component {
+    constructor() {
+        super();
+        this._getSelectedIndex = this._getSelectedIndex.bind(this);
+        this._onLeftIconButtonTouchTap = this._onLeftIconButtonTouchTap.bind(this);
+        this._onRightButtonTouchTap = this._onRightButtonTouchTap.bind(this);
+        this._onNavChange = this._onNavChange.bind(this);
+        this._onHeaderClick = this._onHeaderClick.bind(this);
+    }
+    // Important for theme!
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
         };
-    },
+    }
     getStyles() {
         return {
             cursor: 'pointer',
@@ -52,7 +55,7 @@ let App = React.createClass({
             paddingTop: '0px',
             marginBottom: '8px'
         };
-    },
+    }
     render() {
         let header = (
             <div style={this.getStyles()} onTouchTap={this._onHeaderClick}>
@@ -80,13 +83,13 @@ let App = React.createClass({
                     <RouteHandler/>
                 </div>
             );
-    },
+    }
     _onLeftIconButtonTouchTap() {
         this.refs.leftNav.toggle();
-    },
+    }
     _onRightButtonTouchTap() {
         this.refs.rightNav.toggle();
-    },
+    }
     _getSelectedIndex() {
         let currentItem;
         let menuItems = leftMenuItems.concat(rightMenuItems);
@@ -94,18 +97,21 @@ let App = React.createClass({
             currentItem = menuItems[i];
             if (currentItem.route && this.context.router.isActive(currentItem.route)) return i;
         }
-    },
+    }
     _onNavChange(e, key, payload) {
         this.context.router.transitionTo(payload.route);
-    },
+    }
     _onHeaderClick() {
         this.context.router.transitionTo('root');
         this.refs.leftNav.close();
-    },
-    _onLoginHandler(data) {
-        console.log(data);
-        this.context.router.transitionTo('root');
     }
-});
+}
 
-module.exports = App;
+// Important for theme!
+App.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};
+// Important for route!
+App.contextTypes = {
+    router: React.PropTypes.func
+};

@@ -8,7 +8,7 @@ export default React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
-
+    // Important for theme!
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()

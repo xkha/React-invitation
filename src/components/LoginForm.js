@@ -1,20 +1,18 @@
 import React from 'react';
 import { Paper, TextField, RaisedButton, FloatingActionButton, Styles } from 'material-ui';
 let ThemeManager = new Styles.ThemeManager();
-let request = require('superagent');
 
-export default React.createClass({
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
+export default class LoginForm extends React.Component {
+    constructor() {
+        super();
+        this._loginHandleSubmit = this._loginHandleSubmit.bind(this);
+    }
+    // Important for theme!
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
         };
-    },
+    }
     getStyles() {
         return {
             mainContainer: {
@@ -34,24 +32,7 @@ export default React.createClass({
                 margin: '0 50px 0 0'
             }
         };
-    },
-    _loginHandleSubmit(e) {
-        e.preventDefault();
-        var username = this.refs.username.getValue();
-        var password = this.refs.password.getValue();
-        if (!username || !password) {
-            return;
-        }
-        $.ajax({
-            url: '/login',
-            dataType: 'json',
-            type: 'POST',
-            data: {'username': username, 'password': password },
-            success: function(data) {
-                this.context.router.transitionTo('root');
-            }.bind(this)
-        });
-    },
+    }
     render() {
         var styles = this.getStyles();
         return (
@@ -96,4 +77,30 @@ export default React.createClass({
             </div>
         );
     }
-});
+    _loginHandleSubmit(e) {
+        e.preventDefault();
+        var username = this.refs.username.getValue();
+        var password = this.refs.password.getValue();
+        if (!username || !password) {
+            return;
+        }
+        $.ajax({
+            url: '/login',
+            dataType: 'json',
+            type: 'POST',
+            data: {'username': username, 'password': password },
+            success: function(data) {
+                this.context.router.transitionTo('root');
+            }.bind(this)
+        });
+    }
+}
+
+// Important for theme!
+LoginForm.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};
+// Important for route!
+LoginForm.contextTypes = {
+    router: React.PropTypes.func
+};

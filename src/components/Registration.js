@@ -2,18 +2,13 @@ import React from 'react';
 import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton, Styles } from 'material-ui'
 let ThemeManager = new Styles.ThemeManager();
 
-export default React.createClass({
-
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
+export default class Registration extends React.Component {
+    // Important for theme!
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
         };
-    },
-
+    }
     getStyles() {
         return {
             mainContainer: {
@@ -33,8 +28,7 @@ export default React.createClass({
                 margin: '0 50px 0 0'
             }
         };
-    },
-
+    }
     render() {
         var styles = this.getStyles();
         return (
@@ -68,4 +62,13 @@ export default React.createClass({
             </div>
         );
     }
-});
+}
+
+// Important for theme!
+Registration.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};
+// Important for route!
+Registration.contextTypes = {
+    router: React.PropTypes.func
+};

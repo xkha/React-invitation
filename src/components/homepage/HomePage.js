@@ -1,5 +1,4 @@
 import React from 'react';
-let Router = require('react-router');
 import { Styles } from 'material-ui';
 import HeaderComponent from './HeaderComponent';
 import Categories from './Categories';
@@ -7,17 +6,14 @@ import Categories from './Categories';
 let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
 
-export default React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
+export default class HomePage extends React.Component {
+    // Important for theme!
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
         };
-    },
-    getStyles(){
+    }
+    getStyles() {
         return {
             root: {
                 padding: '74px 24px'
@@ -27,8 +23,7 @@ export default React.createClass({
                 margin: '0px auto 0px auto'
             }
         }
-
-    },
+    }
     render() {
         var styles = this.getStyles();
         return (
@@ -38,4 +33,9 @@ export default React.createClass({
             </div>
         );
     }
-});
+}
+
+// Important for theme!
+HomePage.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};

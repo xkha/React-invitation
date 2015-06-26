@@ -1,22 +1,17 @@
 import React from 'react';
-let Router = require('react-router');
 import { Styles } from 'material-ui';
 import CategoriesCards from './CategoriesCards';
-
-let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
+let ThemeManager = new Styles.ThemeManager();
 
-export default React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
+export default class Categories extends React.Component {
+    // Important for theme!
     getChildContext() {
         return {
             muiTheme: ThemeManager.getCurrentTheme()
         };
-    },
-    getStyles(){
+    }
+    getStyles() {
         return {
             root: {
                 padding: '74px 24px'
@@ -26,8 +21,7 @@ export default React.createClass({
                 margin: '0px auto 0px auto'
             }
         }
-
-    },
+    }
     render() {
         var styles = this.getStyles();
         return (
@@ -40,4 +34,9 @@ export default React.createClass({
                 </div>
         );
     }
-});
+}
+
+// Important for theme!
+Categories.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};

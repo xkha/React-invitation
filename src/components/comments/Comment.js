@@ -2,9 +2,12 @@ import React from 'react';
 import marked from 'marked';
 import { ListItem } from 'material-ui';
 
-export default React.createClass({
+export default class Comment extends React.Component {
+    constructor() {
+        super();
+    }
     render() {
-        var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+        var rawMarkup = marked(this.props.children.toString(), { sanitize: true });
         return (
             <div className="comment">
                 <ListItem>
@@ -16,4 +19,4 @@ export default React.createClass({
             </div>
         );
     }
-});
+}

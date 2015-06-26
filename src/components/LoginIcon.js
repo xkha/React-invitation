@@ -1,8 +1,19 @@
 import React from 'react';
 import { Avatar, FontIcon, SvgIcon, Styles } from 'material-ui';
 let { Colors, Typography } = Styles;
+let ThemeManager = new Styles.ThemeManager();
 
-export default React.createClass({
+export default class LoginIcon extends React.Component {
+    constructor() {
+        super();
+        this._rightMenuHandler = this._rightMenuHandler.bind(this);
+    }
+    // Important for theme!
+    getChildContext() {
+        return {
+            muiTheme: ThemeManager.getCurrentTheme()
+        };
+    }
     getStyles() {
         return {
             root: {
@@ -28,7 +39,7 @@ export default React.createClass({
                 fontSize: 15
             }
         };
-    },
+    }
     render() {
         var styles = this.getStyles();
         return (
@@ -42,8 +53,13 @@ export default React.createClass({
                 </div>
             </div>
         );
-    },
+    }
     _rightMenuHandler() {
         this.props.onTouchTap();
     }
-});
+}
+
+// Important for theme!
+LoginIcon.childContextTypes = {
+    muiTheme: React.PropTypes.object
+};
