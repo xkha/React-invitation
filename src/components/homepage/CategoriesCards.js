@@ -33,7 +33,8 @@ export default class CategoriesCards extends React.Component {
             },
             img: {
                 maxWidth: '300px',
-                margin: '0px'
+                margin: '0px',
+                marginBottom: '-4px'
             }
         }
     }
