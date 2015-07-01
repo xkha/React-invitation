@@ -26,6 +26,7 @@ let AppRoutes = (
 Router
     .create({
         routes: AppRoutes,
+        location: Router.HistoryLocation,
         scrollBehavior: Router.ScrollToTopBehavior
     })
     .run(function (Handler) {
