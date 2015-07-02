@@ -4,6 +4,8 @@ import { AppBar, LeftNav, MenuItem, Styles, FontIcon, Avatar } from 'material-ui
 import LoginIcon from './LoginIcon';
 let { Colors, Spacing, Typography } = Styles;
 let { RouteHandler } = Router;
+import Auth from '../store/auth';
+import Authentication from '../mixins/Authentication'
 
 import reactMixin from 'react-mixin';
 import Theme from '../mixins/Theme';
@@ -22,12 +24,10 @@ let leftMenuItems = [
 
 let rightMenuItems = [
     { route: 'profile', text: 'Profile' },
-    {
-        type: MenuItem.Types.LINK,
-        payload: '/logout',
-        text: 'Logout'
-    }
+    { route: 'logout', text: 'Logout' },
 ];
+
+let auth = new Auth();
 
 export default class App extends React.Component {
     constructor() {
@@ -38,6 +38,11 @@ export default class App extends React.Component {
         this._onNavChange = this._onNavChange.bind(this);
         this._onHeaderClick = this._onHeaderClick.bind(this);
     }
+
+    willTransitionTo(transition) {
+        console.log('Transition - ' + transition);
+    }
+
     getStyles() {
         return {
             cursor: 'pointer',
@@ -57,10 +62,11 @@ export default class App extends React.Component {
                 React invitation
             </div>
         );
+        let loggedIn = auth.loggedIn();
         return (
                 <div>
                     <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-                            iconElementRight={<LoginIcon onTouchTap={this._onRightButtonTouchTap}/>}/>
+                            iconElementRight={loggedIn ? (<LoginIcon onTouchTap={this._onRightButtonTouchTap}/>) : null }/>
                     <LeftNav
                         ref="leftNav"
                         docked={false}
@@ -89,11 +95,34 @@ export default class App extends React.Component {
         let menuItems = leftMenuItems.concat(rightMenuItems);
         for (let i = menuItems.length - 1; i >= 0; i--) {
             currentItem = menuItems[i];
-            if (currentItem.route && this.context.router.isActive(currentItem.route)) return i;
+            if (currentItem.route && this.context.router.isActive(currentItem.route))
+                return i;
         }
     }
     _onNavChange(e, key, payload) {
-        this.context.router.transitionTo(payload.route);
+        switch(payload.route) {
+            case "login":
+                if(auth.loggedIn())
+                    this.context.router.transitionTo('root');
+                else
+                    this.context.router.transitionTo(payload.route);
+                break;
+            case "logout":
+                auth.logout(() => {
+                    this.forceUpdate();
+                    this.context.router.transitionTo('root');
+                });
+                break;
+            case "card":
+                if(!auth.loggedIn())
+                    this.context.router.transitionTo('login');
+                else
+                    this.context.router.transitionTo(payload.route);
+                break;
+            default:
+                this.context.router.transitionTo(payload.route);
+                break;
+        }
     }
     _onHeaderClick() {
         this.context.router.transitionTo('root');

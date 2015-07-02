@@ -7,7 +7,7 @@ import Theme from '../mixins/Theme';
 export default class LoginForm extends React.Component {
     constructor() {
         super();
-        this._loginHandleSubmit = this._loginHandleSubmit.bind(this);
+        this.loginHandleSubmit = this.loginHandleSubmit.bind(this);
     }
     getStyles() {
         return {
@@ -34,7 +34,7 @@ export default class LoginForm extends React.Component {
         return (
             <div style={styles.mainContainer} className="loginForm clearfix">
                 <Paper zDepth={2} style={styles.paper}>
-                    <form onSubmit={this._loginHandleSubmit} className="standard-login">
+                    <form onSubmit={this.loginHandleSubmit} className="standard-login">
                         <h2>Login</h2>
                         <TextField
                             ref="username"
@@ -73,7 +73,7 @@ export default class LoginForm extends React.Component {
             </div>
         );
     }
-    _loginHandleSubmit(e) {
+    loginHandleSubmit(e) {
         e.preventDefault();
         let username = this.refs.username.getValue();
         let password = this.refs.password.getValue();
@@ -81,9 +81,9 @@ export default class LoginForm extends React.Component {
             return;
         }
         let auth = new Auth();
-        auth.login(username, password, function() {
+        auth.login(username, password, () => {
             this.context.router.goBack();
-        }.bind(this));
+        });
     }
 }
 

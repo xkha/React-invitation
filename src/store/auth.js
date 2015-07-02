@@ -7,25 +7,23 @@ export default class Auth {
             type: 'POST',
             data: {'username': username, 'password': password },
             success: function(data) {
-                localStorage.username = data.username;
+                sessionStorage.username = data.username;
                 loginCallback();
             }
         });
     }
 
     username() {
-        return localStorage.username || '';
+        return sessionStorage.username || '';
     }
 
     logout(logoutCallback) {
-        delete localStorage.username;
-        if (logoutCallback) {
-            logoutCallback();
-        }
+        delete sessionStorage.username;
+        logoutCallback();
     }
 
     loggedIn() {
-        return !!localStorage.username;
+        return !!sessionStorage.username;
     }
 };
 
