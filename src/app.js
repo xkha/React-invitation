@@ -8,25 +8,25 @@ import HomePage from './../src/components/homepage/HomePage';
 import App from './../src/components/App';
 
 import Router from 'react-router';
-let { Route, Redirect, DefaultRoute } = Router;
+let { Route, ScrollToTopBehavior } = Router;
 
 InjectTapEventPlugin();
 window.React = React;
 
 let AppRoutes = (
     <Route name="root" path="/" handler={App}>
-        <Route name="home" path="/app" handler={HomePage}/>
-        <Route name="login" path="/login" handler={LoginForm} />
-        <Route name="registration" path="/registration"  handler={Registration} />
-        <Route name="card" path="/card" handler={CardComponent} />
-        <Route name="profile" path="/profile" handler={Registration} />
+        <Route name="home" path="app" handler={HomePage}/>
+        <Route name="login" path="login" handler={LoginForm} />
+        <Route name="registration" path="registration"  handler={Registration} />
+        <Route name="card" path="card" handler={CardComponent} />
+        <Route name="profile" path="profile" handler={Registration} />
     </Route>
 );
 
 Router
     .create({
         routes: AppRoutes,
-        scrollBehavior: Router.ScrollToTopBehavior
+        scrollBehavior: ScrollToTopBehavior
     })
     .run(function (Handler) {
         React.render(<Handler/>, document.body);

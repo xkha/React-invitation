@@ -1,18 +1,8 @@
 import React from 'react';
-import { Paper, Card, CardHeader, Avatar, CardMedia, CardTitle, CardActions, RaisedButton, CardText, FontIcon, Styles } from 'material-ui';
+import { Paper, Card, CardHeader, Avatar, CardMedia, CardTitle, CardActions, RaisedButton, CardText, FontIcon } from 'material-ui';
 import CommentBox from './comments/CommentBox';
-let ThemeManager = new Styles.ThemeManager();
 
-export default React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
+export default class CardComponent extends React.Component {
 
     getStyles() {
         return {
@@ -43,7 +33,7 @@ export default React.createClass({
             }
         }
 
-    },
+    }
 
     render() {
         var style = this.getStyles();
@@ -201,4 +191,4 @@ export default React.createClass({
             </div>
         );
     }
-});
+}

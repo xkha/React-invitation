@@ -99,10 +99,10 @@ gulp.task("server", function() {
         });
     });
 
-    server.app.get('/logout', function(req, res) {
+    /*server.app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
-    });
+    });*/
 
     // handle errors
     server.app.use(function(err, req, res, next) {

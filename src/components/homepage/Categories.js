@@ -2,15 +2,8 @@ import React from 'react';
 import { Styles } from 'material-ui';
 import CategoriesCards from './CategoriesCards';
 let { Colors, Spacing, Typography } = Styles;
-let ThemeManager = new Styles.ThemeManager();
 
 export default class Categories extends React.Component {
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    }
     getStyles() {
         return {
             root: {

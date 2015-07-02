@@ -3,17 +3,9 @@ import { Styles } from 'material-ui';
 import HeaderComponent from './HeaderComponent';
 import Categories from './Categories';
 import FooterElement from './FooterElement';
-
-let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
 
 export default class HomePage extends React.Component {
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    }
     getStyles() {
         return {
             root: {

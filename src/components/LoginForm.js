@@ -1,17 +1,13 @@
 import React from 'react';
-import { Paper, TextField, RaisedButton, FloatingActionButton, Styles } from 'material-ui';
-let ThemeManager = new Styles.ThemeManager();
+import { Paper, TextField, RaisedButton, FloatingActionButton } from 'material-ui';
+import Auth from '../store/auth';
+import reactMixin from 'react-mixin';
+import Theme from '../mixins/Theme';
 
 export default class LoginForm extends React.Component {
     constructor() {
         super();
         this._loginHandleSubmit = this._loginHandleSubmit.bind(this);
-    }
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
     }
     getStyles() {
         return {
@@ -79,26 +75,19 @@ export default class LoginForm extends React.Component {
     }
     _loginHandleSubmit(e) {
         e.preventDefault();
-        var username = this.refs.username.getValue();
-        var password = this.refs.password.getValue();
+        let username = this.refs.username.getValue();
+        let password = this.refs.password.getValue();
         if (!username || !password) {
             return;
         }
-        var self = this;
-        $.ajax({
-            url: '/login',
-            dataType: 'json',
-            type: 'POST',
-            data: {'username': username, 'password': password },
-            success: function(result) {
-                localStorage.setItem('username', result['username']);
-                this.context.router.goBack();
-                //this.context.router.props.
-                //console.log(self);
-            }.bind(this)
-        });
+        let auth = new Auth();
+        auth.login(username, password, function() {
+            this.context.router.goBack();
+        }.bind(this));
     }
 }
+
+reactMixin(LoginForm.prototype, Theme);
 
 // Important for theme!
 LoginForm.childContextTypes = {

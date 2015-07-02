@@ -1,19 +1,8 @@
 import React from 'react';
 import { Paper, List, ListItem, Avatar, FontIcon, Styles } from 'material-ui'
 let { Colors } = Styles;
-let ThemeManager = new Styles.ThemeManager();
 
-export default React.createClass({
-
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
+export default class Lists extends React.Component {
 
     getStyles() {
         return {
@@ -28,7 +17,7 @@ export default React.createClass({
                 marginBottom: '50px'
             }
         };
-    },
+    }
 
     render() {
         var styles = this.getStyles();
@@ -81,4 +70,9 @@ export default React.createClass({
             </div>
         );
     }
-});
+}
+
+Lists.childContextTypes = {
+    muiTheme: React.PropTypes.object
+}
+

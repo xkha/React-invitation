@@ -1,16 +1,9 @@
 import React from 'react';
 import { RaisedButton, Paper, ClearFix, IconButton, Styles} from 'material-ui';
-
-let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
+let ThemeManager = new Styles.ThemeManager();
 
 export default class HeaderComponent extends React.Component {
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    }
     getStyles() {
         return {
             root: {
@@ -89,7 +82,6 @@ export default class HeaderComponent extends React.Component {
         );
     }
 }
-
 // Important for theme!
 HeaderComponent.childContextTypes = {
     muiTheme: React.PropTypes.object

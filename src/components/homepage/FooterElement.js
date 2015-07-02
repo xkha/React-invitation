@@ -1,16 +1,8 @@
 import React from 'react';
 import { Styles, FontIcon } from 'material-ui';
-
-let ThemeManager = new Styles.ThemeManager();
 let { Colors, Spacing, Typography } = Styles;
 
 export default class FooterElement extends React.Component {
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    }
     getStyles() {
         return {
             root: {

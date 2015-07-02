@@ -1,14 +1,9 @@
 import React from 'react';
-import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton, Styles } from 'material-ui'
-let ThemeManager = new Styles.ThemeManager();
+import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton } from 'material-ui'
+import reactMixin from 'react-mixin';
+import Theme from '../mixins/Theme';
 
 export default class Registration extends React.Component {
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    }
     getStyles() {
         return {
             mainContainer: {
@@ -63,6 +58,8 @@ export default class Registration extends React.Component {
         );
     }
 }
+
+reactMixin(Registration.prototype, Theme);
 
 // Important for theme!
 Registration.childContextTypes = {

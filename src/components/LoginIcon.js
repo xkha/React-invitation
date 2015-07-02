@@ -1,18 +1,14 @@
 import React from 'react';
-import { Avatar, FontIcon, SvgIcon, Styles, ListItem } from 'material-ui';
+import reactMixin from 'react-mixin';
+import Theme from '../mixins/Theme';
+import { Avatar, FontIcon, SvgIcon, ListItem, Styles } from 'material-ui';
 let { Colors, Typography } = Styles;
-let ThemeManager = new Styles.ThemeManager();
+import Auth from '../store/auth';
 
 export default class LoginIcon extends React.Component {
     constructor() {
         super();
         this._rightMenuHandler = this._rightMenuHandler.bind(this);
-    }
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
     }
     getStyles() {
         return {
@@ -42,6 +38,8 @@ export default class LoginIcon extends React.Component {
     }
     render() {
         let styles = this.getStyles();
+        let auth = new Auth();
+        let username = auth.username();
         return (
             <div style={styles.root}>
                 <Avatar
@@ -49,7 +47,7 @@ export default class LoginIcon extends React.Component {
                     style={styles.avatar}
                     onTouchTap={this._rightMenuHandler}/>
                 <div style={styles.text}>
-                    <span style={styles.title}>{this.props.username}</span>
+                    <span style={styles.title}>{username}</span>
                 </div>
             </div>
         );
@@ -58,6 +56,8 @@ export default class LoginIcon extends React.Component {
         this.props.onTouchTap();
     }
 }
+
+reactMixin(LoginIcon.prototype, Theme);
 
 // Important for theme!
 LoginIcon.childContextTypes = {

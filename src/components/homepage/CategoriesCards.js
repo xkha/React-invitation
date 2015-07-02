@@ -1,7 +1,6 @@
 import React from 'react';
 import { Styles, Paper } from 'material-ui';
 let { Colors, Spacing, Typography } = Styles;
-let ThemeManager = new Styles.ThemeManager();
 
 export default class CategoriesCards extends React.Component {
     constructor() {
@@ -9,12 +8,6 @@ export default class CategoriesCards extends React.Component {
         this._onMouseOut = this._onMouseOut.bind(this);
         this._onMouseOver = this._onMouseOver.bind(this);
         this.state = { zDepth: 0 };
-    }
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
     }
     getStyles() {
         return {

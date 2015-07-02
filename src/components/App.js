@@ -2,10 +2,11 @@ import React from 'react';
 import Router from 'react-router';
 import { AppBar, LeftNav, MenuItem, Styles, FontIcon, Avatar } from 'material-ui';
 import LoginIcon from './LoginIcon';
-
 let { Colors, Spacing, Typography } = Styles;
 let { RouteHandler } = Router;
-let ThemeManager = new Styles.ThemeManager();
+
+import reactMixin from 'react-mixin';
+import Theme from '../mixins/Theme';
 
 let leftMenuItems = [
     { route: 'login', text: 'Login' },
@@ -36,13 +37,6 @@ export default class App extends React.Component {
         this._onRightButtonTouchTap = this._onRightButtonTouchTap.bind(this);
         this._onNavChange = this._onNavChange.bind(this);
         this._onHeaderClick = this._onHeaderClick.bind(this);
-        this.state = { username: window.localStorage.getItem('username') };
-    }
-    // Important for theme!
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
     }
     getStyles() {
         return {
@@ -66,8 +60,7 @@ export default class App extends React.Component {
         return (
                 <div>
                     <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-                            iconElementRight={<LoginIcon username={this.state.username}
-                            onTouchTap={this._onRightButtonTouchTap}/>}/>
+                            iconElementRight={<LoginIcon onTouchTap={this._onRightButtonTouchTap}/>}/>
                     <LeftNav
                         ref="leftNav"
                         docked={false}
@@ -107,6 +100,8 @@ export default class App extends React.Component {
         this.refs.leftNav.close();
     }
 }
+
+reactMixin(App.prototype, Theme);
 
 // Important for theme!
 App.childContextTypes = {
