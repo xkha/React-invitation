@@ -3,7 +3,7 @@ var restify = require('express-restify-mongoose');
 var CommentModel = require('./../../model/Comment');
 var CommentStore = require('./../../store/comment');
 
-CommentInit = {};
+var CommentInit = {};
 
 CommentInit.init = function init(app) {
 

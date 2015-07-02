@@ -3,7 +3,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jquery": true
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
@@ -26,6 +27,11 @@
     "no-multi-spaces": [0],
     "no-shadow": [0],
     "no-unused-vars": [1],
-    "no-use-before-define": [2, "nofunc"]
-  }
+    "no-use-before-define": [2, "nofunc"],
+
+    "react/jsx-uses-vars": 1
+  },
+  "plugins": [
+    "eslint-plugin-react"
+  ]
 }

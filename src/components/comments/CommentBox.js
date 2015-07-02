@@ -5,26 +5,26 @@ import CommentForm from './CommentForm';
 export default class CommentBox extends React.Component {
     constructor() {
         super();
-        this._handleCommentSubmit = this._handleCommentSubmit.bind(this);
-        this._loadCommentsFromServer = this._loadCommentsFromServer.bind(this);
+        this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+        this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
         this.state = { data: [] };
     }
     getInitialState() {
         return { data: [] };
     }
     componentDidMount() {
-        this._loadCommentsFromServer();
-        setInterval(this._loadCommentsFromServer, this.props.pollInterval);
+        this.loadCommentsFromServer();
+        setInterval(this.loadCommentsFromServer, this.props.pollInterval);
     }
     render() {
         return (
             <div className="commentBox">
                 <CommentList data={this.state.data} />
-                <CommentForm onCommentSubmit={this._handleCommentSubmit} />
+                <CommentForm onCommentSubmit={this.handleCommentSubmit} />
             </div>
         );
     }
-    _loadCommentsFromServer() {
+    loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -37,7 +37,7 @@ export default class CommentBox extends React.Component {
             }.bind(this)
         });
     }
-    _handleCommentSubmit(comment) {
+    handleCommentSubmit(comment) {
         var comments = this.state.data;
         comments.push(comment);
         this.setState({data: comments}, function() {

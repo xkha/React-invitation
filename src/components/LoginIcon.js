@@ -1,14 +1,14 @@
 import React from 'react';
 import reactMixin from 'react-mixin';
 import Theme from '../mixins/Theme';
-import { Avatar, FontIcon, SvgIcon, ListItem, Styles } from 'material-ui';
+import { Avatar, Styles } from 'material-ui';
 let { Colors, Typography } = Styles;
 import Auth from '../store/auth';
 
 export default class LoginIcon extends React.Component {
     constructor() {
         super();
-        this._rightMenuHandler = this._rightMenuHandler.bind(this);
+        this.rightMenuHandler = this.rightMenuHandler.bind(this);
     }
     getStyles() {
         return {
@@ -45,14 +45,14 @@ export default class LoginIcon extends React.Component {
                 <Avatar
                     src='https://pp.vk.me/c623317/v623317570/15583/2xIk8Y9JsfY.jpg'
                     style={styles.avatar}
-                    onTouchTap={this._rightMenuHandler}/>
+                    onTouchTap={this.rightMenuHandler}/>
                 <div style={styles.text}>
                     <span style={styles.title}>{username}</span>
                 </div>
             </div>
         );
     }
-    _rightMenuHandler() {
+    rightMenuHandler() {
         this.props.onTouchTap();
     }
 }

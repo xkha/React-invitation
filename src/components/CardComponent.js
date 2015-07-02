@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Card, CardHeader, Avatar, CardMedia, CardTitle, CardActions, RaisedButton, CardText, FontIcon } from 'material-ui';
+import { Paper, Card, CardHeader, Avatar, RaisedButton, FontIcon } from 'material-ui';
 import CommentBox from './comments/CommentBox';
 
 export default class CardComponent extends React.Component {
@@ -31,8 +31,7 @@ export default class CardComponent extends React.Component {
                 marginLeft: '10px',
                 marginRight: '5px'
             }
-        }
-
+        };
     }
 
     render() {

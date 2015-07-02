@@ -1,6 +1,6 @@
 import React from 'react';
-import { RaisedButton, Paper, ClearFix, IconButton, Styles} from 'material-ui';
-let { Colors, Spacing, Typography } = Styles;
+import { RaisedButton, Styles} from 'material-ui';
+let { Colors, Typography } = Styles;
 let ThemeManager = new Styles.ThemeManager();
 
 export default class HeaderComponent extends React.Component {
@@ -17,7 +17,6 @@ export default class HeaderComponent extends React.Component {
                 marginLeft: (window.innerWidth * 0.5) - 174 + 'px'
             },
             tagline: {
-
                 textAlign: 'center',
                 maxWidth: '575px',
                 marginTop: '32px',
@@ -54,7 +53,7 @@ export default class HeaderComponent extends React.Component {
             nowrap: {
                 whiteSpace: 'nowrap'
             }
-        }
+        };
     }
     render() {
         var styles = this.getStyles();

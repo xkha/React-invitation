@@ -1,12 +1,10 @@
 import React from 'react';
 import Router from 'react-router';
-import { AppBar, LeftNav, MenuItem, Styles, FontIcon, Avatar } from 'material-ui';
+import { AppBar, LeftNav, MenuItem, Styles } from 'material-ui';
 import LoginIcon from './LoginIcon';
 let { Colors, Spacing, Typography } = Styles;
 let { RouteHandler } = Router;
 import Auth from '../store/auth';
-import Authentication from '../mixins/Authentication'
-
 import reactMixin from 'react-mixin';
 import Theme from '../mixins/Theme';
 
@@ -24,7 +22,7 @@ let leftMenuItems = [
 
 let rightMenuItems = [
     { route: 'profile', text: 'Profile' },
-    { route: 'logout', text: 'Logout' },
+    { route: 'logout', text: 'Logout' }
 ];
 
 let auth = new Auth();
@@ -32,11 +30,11 @@ let auth = new Auth();
 export default class App extends React.Component {
     constructor() {
         super();
-        this._getSelectedIndex = this._getSelectedIndex.bind(this);
-        this._onLeftIconButtonTouchTap = this._onLeftIconButtonTouchTap.bind(this);
-        this._onRightButtonTouchTap = this._onRightButtonTouchTap.bind(this);
-        this._onNavChange = this._onNavChange.bind(this);
-        this._onHeaderClick = this._onHeaderClick.bind(this);
+        this.getSelectedIndex = this.getSelectedIndex.bind(this);
+        this.onLeftIconButtonTouchTap = this.onLeftIconButtonTouchTap.bind(this);
+        this.onRightButtonTouchTap = this.onRightButtonTouchTap.bind(this);
+        this.onNavChange = this.onNavChange.bind(this);
+        this.onHeaderClick = this.onHeaderClick.bind(this);
     }
 
     willTransitionTo(transition) {
@@ -58,54 +56,56 @@ export default class App extends React.Component {
     }
     render() {
         let header = (
-            <div style={this.getStyles()} onTouchTap={this._onHeaderClick}>
+            <div style={this.getStyles()} onTouchTap={this.onHeaderClick}>
                 React invitation
             </div>
         );
         let loggedIn = auth.loggedIn();
         return (
                 <div>
-                    <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-                            iconElementRight={loggedIn ? (<LoginIcon onTouchTap={this._onRightButtonTouchTap}/>) : null }/>
+                    <AppBar onLeftIconButtonTouchTap={this.onLeftIconButtonTouchTap}
+                            iconElementRight={loggedIn ? (<LoginIcon onTouchTap={this.onRightButtonTouchTap}/>) : null }/>
                     <LeftNav
                         ref="leftNav"
                         docked={false}
                         isInitiallyOpen={false}
                         header={header}
                         menuItems={leftMenuItems}
-                        selectedIndex={this._getSelectedIndex()}
-                        onChange={this._onNavChange} />
+                        selectedIndex={this.getSelectedIndex()}
+                        onChange={this.onNavChange} />
                     <LeftNav ref="rightNav" docked={false}
                         menuItems={rightMenuItems}
-                        selectedIndex={this._getSelectedIndex()}
-                        onChange={this._onNavChange}
+                        selectedIndex={this.getSelectedIndex()}
+                        onChange={this.onNavChange}
                         openRight={true}/>
                     <RouteHandler/>
                 </div>
             );
     }
-    _onLeftIconButtonTouchTap() {
+    onLeftIconButtonTouchTap() {
         this.refs.leftNav.toggle();
     }
-    _onRightButtonTouchTap() {
+    onRightButtonTouchTap() {
         this.refs.rightNav.toggle();
     }
-    _getSelectedIndex() {
+    getSelectedIndex() {
         let currentItem;
         let menuItems = leftMenuItems.concat(rightMenuItems);
         for (let i = menuItems.length - 1; i >= 0; i--) {
             currentItem = menuItems[i];
-            if (currentItem.route && this.context.router.isActive(currentItem.route))
+            if (currentItem.route && this.context.router.isActive(currentItem.route)) {
                 return i;
+            }
         }
     }
-    _onNavChange(e, key, payload) {
+    onNavChange(e, key, payload) {
         switch(payload.route) {
             case "login":
-                if(auth.loggedIn())
+                if(auth.loggedIn()) {
                     this.context.router.transitionTo('root');
-                else
+                } else {
                     this.context.router.transitionTo(payload.route);
+                }
                 break;
             case "logout":
                 auth.logout(() => {
@@ -114,17 +114,18 @@ export default class App extends React.Component {
                 });
                 break;
             case "card":
-                if(!auth.loggedIn())
+                if(!auth.loggedIn()) {
                     this.context.router.transitionTo('login');
-                else
+                } else {
                     this.context.router.transitionTo(payload.route);
+                }
                 break;
             default:
                 this.context.router.transitionTo(payload.route);
                 break;
         }
     }
-    _onHeaderClick() {
+    onHeaderClick() {
         this.context.router.transitionTo('root');
         this.refs.leftNav.close();
     }
@@ -140,3 +141,4 @@ App.childContextTypes = {
 App.contextTypes = {
     router: React.PropTypes.func
 };
+

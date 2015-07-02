@@ -1,7 +1,7 @@
-var CommentModel= require('./../model/Comment');
+var CommentModel = require('./../model/Comment');
 var logger = require('./../libs/logs');
 
-CommentStore = {};
+var CommentStore = {};
 
 CommentStore.find = function (req, res) {
     return CommentModel.find(function (err, comments) {

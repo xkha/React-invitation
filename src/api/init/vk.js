@@ -1,6 +1,6 @@
 var vk = require('./../../store/vk.js');
 
-VKInit = {};
+var VKInit = {};
 
 VKInit.init = function init(app) {
     app.get('/vk', vk.auth);

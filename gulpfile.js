@@ -1,4 +1,3 @@
-var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var session = require('express-session');
@@ -7,6 +6,7 @@ var morgan = require('morgan');
 var cors = require('cors');
 var gulp = require('gulp');
 var rimraf = require('gulp-rimraf');
+var eslint = require('gulp-eslint');
 
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
@@ -20,13 +20,18 @@ var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 
 var passport = require('passport');
-var expressSession = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 var Account = require('./src/model/Account');
 
+gulp.task('lint', function () {
+    return gulp.src(['src/**/*.js', './*.js'])
+        .pipe(eslint())
+        .pipe(eslint.failOnError());
+});
+
 var devCompiler = webpack(configWebpack);
 
-gulp.task("build", function() {
+gulp.task('build', function() {
     devCompiler.run(function() {});
 });
 
@@ -35,7 +40,7 @@ gulp.task('clean', function() {
         .pipe(rimraf({ force: true }));
 });
 
-gulp.task("server", function() {
+gulp.task('server', function() {
 
     var server = new webpackDevServer(webpack(configWebpack), {
         publicPath: configWebpack.output.publicPath,
@@ -53,7 +58,7 @@ gulp.task("server", function() {
     });
 
     var env = process.env.NODE_ENV || 'development';
-    if ('development' == env) {
+    if (env === 'development') {
         server.app.use(morgan('dev'));
     }
 
@@ -92,6 +97,8 @@ gulp.task("server", function() {
          Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
             if (err) {
                 console.log(err);
+            } else if(account) {
+                console.log(account);
             }
             passport.authenticate('local')(req, res, function () {
                 res.render('index', { name: 'John' });
@@ -118,4 +125,6 @@ gulp.task("server", function() {
     });
 });
 
-gulp.task("default", ["clean", "build", "server"]);
+gulp.task('default', ['lint', 'clean', 'build', 'server']);
+
+

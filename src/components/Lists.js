@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, List, ListItem, Avatar, FontIcon, Styles } from 'material-ui'
+import { Paper, List, ListItem, Avatar, FontIcon, Styles } from 'material-ui';
 let { Colors } = Styles;
 
 export default class Lists extends React.Component {
@@ -74,5 +74,5 @@ export default class Lists extends React.Component {
 
 Lists.childContextTypes = {
     muiTheme: React.PropTypes.object
-}
+};
 

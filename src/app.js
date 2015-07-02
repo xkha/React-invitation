@@ -1,13 +1,10 @@
 import React from 'react';
 import InjectTapEventPlugin from 'react-tap-event-plugin';
-
 import LoginForm from './../src/components/LoginForm';
 import Registration from './../src/components/Registration';
 import CardComponent from './../src/components/CardComponent';
 import HomePage from './../src/components/homepage/HomePage';
 import App from './../src/components/App';
-import Auth from './store/auth';
-
 import Router from 'react-router';
 let { Route, ScrollToTopBehavior } = Router;
 
@@ -29,6 +26,6 @@ Router
         routes: AppRoutes,
         scrollBehavior: ScrollToTopBehavior
     })
-    .run(function (Handler) {
+    .run(function(Handler) {
         React.render(<Handler/>, document.body);
     });

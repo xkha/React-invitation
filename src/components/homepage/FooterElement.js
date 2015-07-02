@@ -33,7 +33,7 @@ export default class FooterElement extends React.Component {
                 color: 'rgba(255,255,255,0.87)',
                 fill: 'rgba(0,0,0,0.87)'
             }
-        }
+        };
     }
     render() {
         var styles = this.getStyles();

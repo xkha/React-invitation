@@ -1,7 +1,5 @@
 import React from 'react';
-import { Styles } from 'material-ui';
 import CategoriesCards from './CategoriesCards';
-let { Colors, Spacing, Typography } = Styles;
 
 export default class Categories extends React.Component {
     getStyles() {
@@ -13,7 +11,7 @@ export default class Categories extends React.Component {
                 maxWidth: '912px',
                 margin: '0px auto 0px auto'
             }
-        }
+        };
     }
     render() {
         var styles = this.getStyles();

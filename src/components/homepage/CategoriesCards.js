@@ -5,8 +5,8 @@ let { Colors, Spacing, Typography } = Styles;
 export default class CategoriesCards extends React.Component {
     constructor() {
         super();
-        this._onMouseOut = this._onMouseOut.bind(this);
-        this._onMouseOver = this._onMouseOver.bind(this);
+        this.onMouseOut = this.onMouseOut.bind(this);
+        this.onMouseOver = this.onMouseOver.bind(this);
         this.state = { zDepth: 0 };
     }
     getStyles() {
@@ -29,7 +29,7 @@ export default class CategoriesCards extends React.Component {
                 margin: '0px',
                 marginBottom: '-4px'
             }
-        }
+        };
     }
     getInitialState() {
         return { zDepth: this.state.zDepth };
@@ -39,18 +39,18 @@ export default class CategoriesCards extends React.Component {
         return (
             <Paper zDepth={this.state.zDepth}
                    style={styles.card}
-                   onMouseOver={this._onMouseOver}
-                   onMouseOut={this._onMouseOut}>
+                   onMouseOver={this.onMouseOver}
+                   onMouseOut={this.onMouseOut}>
                 <h2 style={styles.h2}> {this.props.heading} </h2>
                 <img src={this.props.img} style={styles.img}/>
             </Paper>
         );
     }
-    _onMouseOver() {
+    onMouseOver() {
         this.setState({ zDepth: 4 });
     }
 
-    _onMouseOut() {
+    onMouseOut() {
         this.setState({ zDepth: 0 });
     }
 }
@@ -59,3 +59,4 @@ export default class CategoriesCards extends React.Component {
 CategoriesCards.childContextTypes = {
     muiTheme: React.PropTypes.object
 };
+

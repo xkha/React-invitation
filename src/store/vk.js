@@ -8,11 +8,11 @@ VKStore.auth = function (req, res) {
     xhr.send(null);
     var data = JSON.parse(xhr.responseText);
 
-    var user_id = data.user_id;
-    var access_token = data.access_token;
+    var userId = data.user_id;
+    var accessToken = data.access_token;
 
     xhr = new XMLHttpRequest();
-    var getUserInfoUrl = 'https://api.vk.com/method/users.get?user_id=' + user_id + '&v=5.34&access_token=' + access_token + '&fields=photo_50&https=1';
+    var getUserInfoUrl = 'https://api.vk.com/method/users.get?user_id=' + userId + '&v=5.34&access_token=' + accessToken + '&fields=photo_50&https=1';
     xhr.open("GET", getUserInfoUrl, false);
     xhr.send(null);
 

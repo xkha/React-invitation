@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, TextField, RaisedButton, FontIcon, FloatingActionButton } from 'material-ui'
+import { Paper, TextField, RaisedButton } from 'material-ui';
 import reactMixin from 'react-mixin';
 import Theme from '../mixins/Theme';
 

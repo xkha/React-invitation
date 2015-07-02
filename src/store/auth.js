@@ -25,5 +25,5 @@ export default class Auth {
     loggedIn() {
         return !!sessionStorage.username;
     }
-};
+}
 
